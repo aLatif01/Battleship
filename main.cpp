@@ -14,9 +14,9 @@ int main(int argc, const char* argv[])
   {
     if(numberShips < 0 || numberShips > 5)
     {
-      correctInput = true;
-
       //insert code which will run the game here
+
+      correctInput = true;
     }
     else
     {
