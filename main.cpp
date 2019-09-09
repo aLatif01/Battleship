@@ -28,6 +28,7 @@ int main(int argc, const char* argv[])
   player1.createBoard();
   player1.printBoard();
 
+  //each "shot" will call the fire function (example: player1.fire(guessRow, guessColumn);)
 
 
   return 0;
