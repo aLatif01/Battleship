@@ -10,13 +10,14 @@ int main(int argc, const char* argv[])
   std::cin >> numberShips;
   if(numberShips < 0 || numberShips > 5)
   {
-    
+
   }
 
   Player player1;
   player1.createBoard();
   player1.printBoard();
 
+  //each "shot" will call the fire function (example: player1.fire(guessRow, guessColumn);)
 
 
   return 0;
