@@ -8,9 +8,20 @@ int main(int argc, const char* argv[])
 
   std::cout << "How many ships do you want to play with (1 - 5)? ";
   std::cin >> numberShips;
-  if(numberShips < 0 || numberShips > 5)
+
+  bool correctInput = false;
+  while(correctInput == false)
   {
-    
+    if(numberShips < 0 || numberShips > 5)
+    {
+      correctInput = true;
+
+      //insert code which will run the game here
+    }
+    else
+    {
+      std::cout << "Sorry please enter the correct number of ships!\n"
+    }
   }
 
   Player player1;
