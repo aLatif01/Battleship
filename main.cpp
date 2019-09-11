@@ -26,6 +26,12 @@ int main(int argc, const char* argv[])
 
   Player player1;
   player1.createBoard();
+  player1.printBoard();
+
+  for(int i = 0; i < numberShips; i++)
+  {
+    //call setShips() [AUSTIN] - direction & coordinates
+  }
 
   //1. Player 1 determines number of ships to play with (FORCED VALID INPUT)
   //2. Player 1's board is created and they begin placing ships

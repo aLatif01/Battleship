@@ -8,11 +8,11 @@ Player::Player()
 
 void Player::createBoard()
 {
-  for(int x = 1; x <= m_rows; x++)
+  for(int x = 0; x <= m_rows; x++)
   {
-    for(int y = 1; y <= m_cols; y++)
+    for(int y = 0; y <= m_cols; y++)
     {
-      gameBoard[x][y] = '#'; //BLANK BOARD SPACE
+      gameBoard[x][y] = 0; //BLANK BOARD SPACE
     }
   }
 }
@@ -46,42 +46,42 @@ char Player::find(int row, char col) //will return the value of the board at the
     {
         if(col == 'A')
         {
-            return (gameBoard[row][1]);
+            return (gameBoard[row][0]);
         }
 
         if(col == 'B')
         {
-            return (gameBoard[row][2]);
+            return (gameBoard[row][1]);
         }
 
         if(col == 'C')
         {
-            return (gameBoard[row][3]);
+            return (gameBoard[row][2]);
         }
 
         if(col == 'D')
         {
-            return (gameBoard[row][4]);
+            return (gameBoard[row][3]);
         }
 
         if(col == 'E')
         {
-            return (gameBoard[row][5]);
+            return (gameBoard[row][4]);
         }
 
         if(col == 'F')
         {
-           return (gameBoard[row][6]);
+           return (gameBoard[row][5]);
         }
 
         if(col == 'G')
         {
-            return (gameBoard[row][7]);
+            return (gameBoard[row][6]);
         }
 
         if(col == 'H')
         {
-            return (gameBoard[row][8]);
+            return (gameBoard[row][7]);
         }
       }
     }
