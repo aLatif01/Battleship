@@ -2,6 +2,7 @@
 #define Ship_h
 #include <utility>
 #include<iostream>
+#include<vector>
 
 class Ship
 {

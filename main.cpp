@@ -1,35 +1,50 @@
 #include "Player.h"
 
+void isInt(int& checkInt)
+{
+  std::cin >> checkInt;
+
+  while(std::cin.fail())
+  {
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cout << "ERROR: Please enter an integer (1 - 5): ";
+    std::cin >> checkInt;
+  }
+}
+
 int main(int argc, const char* argv[])
 {
-  std::cout << "\n\nWelcome to Battleship!\n\n";
-
+  std::cout << "\n\nWelcome to myBattleship!\n\n";
   int numberShips = 0;
 
-  std::cout << "How many ships do you want to play with (1 - 5)? ";
-  std::cin >> numberShips;
-
-  bool correctInput = false;
-  while(correctInput == false)
+  while(numberShips <= 0 || numberShips > 5)
   {
-    if(numberShips < 0 || numberShips > 5)
-    {
-      //insert code which will run the game here
-
-      correctInput = true;
-    }
-    else
-    {
-      std::cout << "Sorry please enter the correct number of ships!\n";
-    }
+    std::cout << "How many ships do you want to play with (1 - 5)? ";
+    isInt(numberShips);
   }
 
   Player player1;
   player1.createBoard();
-  player1.printBoard();
+
+  //1. Player 1 determines number of ships to play with (FORCED VALID INPUT)
+  //2. Player 1's board is created and they begin placing ships
+  //      ENTER FOR-LOOP
+  //3. Player 1 is prompted for direction of placement (vertical/horiztonal)
+  //4. Player 1 is prompted for a coordinate of some end-point (left OR bottom) of ship
+  //5. Player 1's input is passed into a function to verify if the placement is VALID or not,
+  //    IF NOT VALID, then Player 1 is re-prompted for direction and coordinate
+  //6. Once placement IS VALID, some other function places the ship on the correct player's BOARD and
+  //    coordinates of that entire ship are stored with addCoordinate(row,col)
+  //    ship is then added to PLAYER
+  //7. Process repeats for number of ships Player 1 picked to play with
+  //8. ship placement control swtiches to Player 2 and steps 2-7 are repeated.
+  //9. THIS IS WHERE THE GAME BEGINS...
+
+
+
 
   //each "shot" will call the fire function (example: player1.fire(guessRow, guessColumn);)
-
 
   return 0;
 }
