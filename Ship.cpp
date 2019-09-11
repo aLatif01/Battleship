@@ -5,11 +5,18 @@
 Ship::Ship(int length)
 {
   m_shipLength = length;
+  std::vector<int, char> m_pairs;
 }
 
 int Ship::getLength()
 {
   return m_shipLength;
+}
+
+bool Ship::addCoordinate(int row, char col)
+{
+  m_pairs.push_back(row, col);
+  m_shipLength++;
 }
 
 bool Ship::checkForHit(int row, char col)

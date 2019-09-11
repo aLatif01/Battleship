@@ -8,6 +8,7 @@ class Ship
 public:
   Ship(int length);
   int getLength();
+  void addCoordinate(int row, char col);
   bool checkForHit(int row, char col);
 
 private:
