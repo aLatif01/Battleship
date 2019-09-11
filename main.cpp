@@ -15,7 +15,7 @@ void isInt(int& checkInt)
 
 int main(int argc, const char* argv[])
 {
-  std::cout << "\n\nWelcome to myBattleship!\n\n";
+  std::cout << "\n\nWelcome to Battleship!\n\n";
   int numberShips = 0;
 
   while(numberShips <= 0 || numberShips > 5)
