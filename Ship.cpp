@@ -1,6 +1,8 @@
 #include "Ship.h"
 #include <algorithm>
 #include <utility>
+#include<vector>
+
 
 Ship::Ship(int length)
 {
@@ -13,7 +15,7 @@ int Ship::getLength()
   return m_shipLength;
 }
 
-bool Ship::addCoordinate(int row, char col)
+void Ship::addCoordinate(int row, char col)
 {
   m_pairs.push_back(row, col);
   m_shipLength++;
@@ -21,10 +23,10 @@ bool Ship::addCoordinate(int row, char col)
 
 bool Ship::checkForHit(int row, char col)
 {
-  pair<int,char> checkPair;
+  std::pair<int,char> checkPair;
   checkPair.first = row;
   checkPair.second = col;
-  if(std::find(m_pairs.begin(), m_pairs.end(), checkPair) != m_pairs_end()) {
+  if(std::find(m_pairs.begin(), m_pairs.end(), checkPair) != m_pairs.end()) {
     //will enter this if statement if the pair is in the ships
     //we do NOT need to remove the specific element from the vector because this checkForHit function will
     //only be called if the space is 'S' and the space will be changed to '#' in Player.cpp right after this function finishes

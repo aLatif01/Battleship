@@ -1,4 +1,5 @@
 #include "Player.h"
+#include<iostream>
 
 Player::Player()
 {
@@ -35,10 +36,58 @@ void Player::printBoard()
   }
 }
 
-char find(int row, char col); //will return the value of the board at the specified location (ex: find(3,C))
+char Player::find(int row, char col) //will return the value of the board at the specified location (ex: find(3,C))
 {
-  //to do
+  //to do fhadsjklsfdsjkl
+
+  if (row >= 1 && row < 9)
+  {
+    if(col == 'A' || col == 'B' || col == 'C' || col == 'D' || col == 'E' || col == 'F' || col == 'G' || col == 'H')
+    {
+        if(col == 'A')
+        {
+            return (gameBoard[row][1]);
+        }
+
+        if(col == 'B')
+        {
+            return (gameBoard[row][2]);
+        }
+
+        if(col == 'C')
+        {
+            return (gameBoard[row][3]);
+        }
+
+        if(col == 'D')
+        {
+            return (gameBoard[row][4]);
+        }
+
+        if(col == 'E')
+        {
+            return (gameBoard[row][5]);
+        }
+
+        if(col == 'F')
+        {
+           return (gameBoard[row][6]);
+        }
+
+        if(col == 'G')
+        {
+            return (gameBoard[row][7]);
+        }
+
+        if(col == 'H')
+        {
+            return (gameBoard[row][8]);
+        }
+      }
+    }
 }
+
+
 
 void Player::fire(int row, char col)
 {
@@ -51,7 +100,7 @@ void Player::fire(int row, char col)
   for(int i = 0; i < m_shipCount; i++)
   {
     if (m_ships[i].checkForHit(row, col) == true) {
-      //to do in here: 
+      //to do in here:
       //1. set location to '#',
       //2. check if m_ships[i].getLength() == 0 and if so then remove it from m_ships vector
       //3. check if m_ships is empty and, if so, game is over because all ships are
