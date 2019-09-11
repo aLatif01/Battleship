@@ -38,7 +38,7 @@ void Player::printBoard()
 
 char Player::find(int row, char col) //will return the value of the board at the specified location (ex: find(3,C))
 {
-  //to do
+  //to do fhadsjklsfdsjkl
 
   if (row >= 1 && row < 9)
   {
