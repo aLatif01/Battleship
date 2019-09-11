@@ -17,7 +17,7 @@ public:
 private:
   const static int m_rows = 8;
   const static int m_cols = 8;
-  char gameBoard[m_rows][m_cols]; //int,chars
+  int gameBoard[m_rows][m_cols]; //int,chars
   int m_shipCount = 0;
   std::vector<Ship> m_ships; //vector of the ship
 };
