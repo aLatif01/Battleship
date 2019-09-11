@@ -9,11 +9,11 @@ class Ship
 public:
   Ship(int length);
   int getLength();
-  void addCoordinate(int row, char col);
-  bool checkForHit(int row, char col);
+  void addCoordinate(int row, int col);
+  bool checkForHit(int row, int col);
 
 private:
   int m_shipLength = 0;
-  std::vector<std::pair<int,char>> m_pairs; //this is a list of ordered pairs
+  std::vector<std::pair<int,int>> m_pairs; //this is a list of ordered pairs
 };
-#endif /* Player_h */
+#endif /* Ship_h */

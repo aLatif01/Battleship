@@ -7,7 +7,7 @@
 Ship::Ship(int length)
 {
   m_shipLength = length;
-  std::vector<int, char> m_pairs;
+  std::vector<std::pair<int, int>> m_pairs;
 }
 
 int Ship::getLength()
@@ -15,15 +15,18 @@ int Ship::getLength()
   return m_shipLength;
 }
 
-void Ship::addCoordinate(int row, char col)
+void Ship::addCoordinate(int row, int col)
 {
-  m_pairs.push_back(row, col);
+  std::pair<int,int> newPair;
+  newPair.first = row;
+  newPair.second = col;
+  m_pairs.push_back(newPair);
   m_shipLength++;
 }
 
-bool Ship::checkForHit(int row, char col)
+bool Ship::checkForHit(int row, int col)
 {
-  std::pair<int,char> checkPair;
+  std::pair<int,int> checkPair;
   checkPair.first = row;
   checkPair.second = col;
   if(std::find(m_pairs.begin(), m_pairs.end(), checkPair) != m_pairs.end()) {
