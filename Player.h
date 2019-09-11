@@ -3,7 +3,7 @@
 #include <utility>
 #include<iostream>
 #include "Ship.h"
-=======
+
 class Player
 {
 public:

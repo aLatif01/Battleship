@@ -13,6 +13,6 @@ public:
 
 private:
   int m_shipLength = 0;
-  std::vector<pair<int,char>> m_pairs; //this is a list of ordered pairs
+  std::vector<std::pair<int,char>> m_pairs; //this is a list of ordered pairs
 };
 #endif /* Player_h */

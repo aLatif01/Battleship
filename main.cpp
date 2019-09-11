@@ -20,7 +20,7 @@ int main(int argc, const char* argv[])
     }
     else
     {
-      std::cout << "Sorry please enter the correct number of ships!\n"
+      std::cout << "Sorry please enter the correct number of ships!\n";
     }
   }
 
