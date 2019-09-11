@@ -1,4 +1,5 @@
 #include "Player.h"
+#include<iostream>
 
 Player::Player()
 {
@@ -35,53 +36,52 @@ void Player::printBoard()
   }
 }
 
-char find(int row, char col) //will return the value of the board at the specified location (ex: find(3,C))
+char Player::find(int row, char col) //will return the value of the board at the specified location (ex: find(3,C))
 {
   //to do
 
-//could we write some code to make this an INT? let col == 'A' to be 1, etc
   if (row >= 1 && row < 9)
   {
     if(col == 'A' || col == 'B' || col == 'C' || col == 'D' || col == 'E' || col == 'F' || col == 'G' || col == 'H')
     {
         if(col == 'A')
         {
-            return (gameBoard[row -1][col]);
+            return (gameBoard[row][1]);
         }
 
         if(col == 'B')
         {
-            return (gameBoard[row - 1][col]);
+            return (gameBoard[row][2]);
         }
 
         if(col == 'C')
         {
-            return (gameBoard[row - 1][2]);
+            return (gameBoard[row][3]);
         }
 
         if(col == 'D')
         {
-            return (gameBoard[row - 1][3]);
+            return (gameBoard[row][4]);
         }
 
         if(col == 'E')
         {
-            return (gameBoard[row - 1][4]);
+            return (gameBoard[row][5]);
         }
 
         if(col == 'F')
         {
-           return (gameBoard[row - 1][5]);
+           return (gameBoard[row][6]);
         }
 
         if(col == 'G')
         {
-            return (gameBoard[row - 1][6]);
+            return (gameBoard[row][7]);
         }
 
         if(col == 'H')
         {
-            return (gameBoard[row - 1][7]);
+            return (gameBoard[row][8]);
         }
       }
     }
