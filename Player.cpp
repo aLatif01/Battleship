@@ -134,7 +134,8 @@ void Player::fire(int row, char col)
     }
     if(m_shipCount == 0)
     {
-
+      //print the win or loss message but we should do this
+      // in a different function that only checks for this
     }
   }
 
