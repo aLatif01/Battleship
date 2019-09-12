@@ -36,7 +36,7 @@ void Player::printBoard()
   }
 }
 
-char Player::find(char col, int row) //will return the value of the board at the specified location (ex: find(3,C))
+char Player::find(int row, char col) //will return the value of the board at the specified location (ex: find(3,C))
 {
   //to do
   if (row >= 1 && row < 9)
@@ -45,56 +45,55 @@ char Player::find(char col, int row) //will return the value of the board at the
     {
         if(col == 'A')
         {
-            return (gameBoard[1][row]);
+            return (gameBoard[row][1]);
         }
 
         if(col == 'B')
         {
-            return (gameBoard[2][row]);
+            return (gameBoard[row][2]);
         }
 
         if(col == 'C')
         {
-            return (gameBoard[3][row]);
+            return (gameBoard[row][3]);
         }
 
         if(col == 'D')
         {
-            return (gameBoard[4][row]);
+            return (gameBoard[row][4]);
         }
 
         if(col == 'E')
         {
-            return (gameBoard[5][row]);
+            return (gameBoard[row][5]);
         }
 
         if(col == 'F')
         {
-           return (gameBoard[6][row]);
+           return (gameBoard[row][6]);
         }
 
         if(col == 'G')
         {
-            return (gameBoard[7][row]);
+            return (gameBoard[row][7]);
         }
 
         if(col == 'H')
         {
-            return (gameBoard[8][row]);
+            return (gameBoard[row][8]);
         }
       }
     }
 }
 
 
-
-void Player::fire(char col, int row)
+void Player::fire(int row, char col)
 {
-  char location = find(col, row);
+  char location = find(row, col);
   if (location == '#')
   {
     std::cout << "You have missed at location " << col << row << "\n";
-    location = 'M';
+    gameBoard[row][convertColumn(col)] = 'M'; // UPDATES BOARD
     return;
   }
   else if(location == 'M')
@@ -110,6 +109,7 @@ void Player::fire(char col, int row)
         //We need to decrease the size of the vector by 1 each time they
         //hit so the length of the ship will eventually be 0.
         location = 'H';
+
         if(shipDirection == "HORIZONTAL")
         {
           //m_ships[i].erase causes an error and im unsure what to do
@@ -185,4 +185,59 @@ void Player::changeCase(std::string &word)
         swap[i] = upper;
     }
     word = swap;
+}
+
+int Player::convertColumn(char col)
+{
+  int num = 0;
+  if(col == 'A' || col == 'B' || col == 'C' || col == 'D' || col == 'E' || col == 'F' || col == 'G' || col == 'H')
+  {
+      if(col == 'A')
+      {
+        num = 1;
+          return (num);
+      }
+
+      if(col == 'B')
+      {
+        num =2;
+          return (num);
+      }
+
+      if(col == 'C')
+      {
+        num =3;
+          return (num);
+      }
+
+      if(col == 'D')
+      {
+        num = 4;
+          return (num);
+      }
+
+      if(col == 'E')
+      {
+        num = 5;
+          return (num);
+      }
+
+      if(col == 'F')
+      {
+        num = 6;
+         return (num);
+      }
+
+      if(col == 'G')
+      {
+        num = 7;
+          return (num);
+      }
+
+      if(col == 'H')
+      {
+        num = 8;
+          return (num);
+      }
+    }
 }
