@@ -39,11 +39,4 @@ bool Ship::checkForHit(int row, int col)
   else {
     return false;
   }
-
-  void Ship::setShips(int numOfShips)
-  {
-    //take in data from player about where they want their ships placed
-    //and cross check this to make sure that's valid
-    
-  }
 }

@@ -11,7 +11,6 @@ public:
   int getLength();
   void addCoordinate(int row, int col);
   bool checkForHit(int row, int col);
-  void setShips(int numOfShips);
 
 private:
   int m_shipLength = 0;

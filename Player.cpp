@@ -112,7 +112,7 @@ void Player::fire(int row, char col)
 
 void Player::addShip(int numShips)
 {
-  for(int i = 1, i<=numShips; i++)
+  for(int i = 1; i <= numShips; i++)
   {
     //following code asks user in which direction he would like the ship to be placed
     //need to cross check with while loop that the user either entered HORIZONTAL or VERTICAL
