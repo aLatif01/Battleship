@@ -9,11 +9,11 @@ Player::Player()
 
 void Player::createBoard()
 {
-  for(int x = 0; x <= m_rows; x++)
+  for(int x = 1; x < m_rows; x++)
   {
-    for(int y = 0; y <= m_cols; y++)
+    for(int y = 1; y < m_cols; y++)
     {
-      gameBoard[x][y] = 0; //BLANK BOARD SPACE
+      gameBoard[x][y] = '#'; //BLANK BOARD SPACE
     }
   }
 }
@@ -23,12 +23,12 @@ void Player::printBoard()
   int rowLabel = 1;
   std::cout << "\tA\tB\tC\tD\tE\tF\tG\tH\n"; //COLUMN LABELS
 
-  for(int x = 1; x <= m_rows; x++)
+  for(int x = 1; x < m_rows; x++)
   {
     std::cout << rowLabel << "\t";
     rowLabel++;
 
-    for(int y = 1; y <= m_cols; y++)
+    for(int y = 1; y < m_cols; y++)
     {
       std::cout << gameBoard[x][y] << "\t";
     }
@@ -39,7 +39,7 @@ void Player::printBoard()
 
 char Player::find(int row, char col) //will return the value of the board at the specified location (ex: find(3,C))
 {
-  //to do fhadsjklsfdsjkl
+  //to do
 
   if (row >= 1 && row < 9)
   {
