@@ -13,7 +13,7 @@ void Player::createBoard()
   {
     for(int y = 0; y <= m_cols; y++)
     {
-      gameBoard[x][y] = 0; //BLANK BOARD SPACE
+      gameBoard[x][y] = '#'; //BLANK BOARD SPACE
     }
   }
 }
@@ -39,7 +39,7 @@ void Player::printBoard()
 
 char Player::find(int row, char col) //will return the value of the board at the specified location (ex: find(3,C))
 {
-  //to do fhadsjklsfdsjkl
+  //to do
 
   if (row >= 1 && row < 9)
   {
