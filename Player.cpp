@@ -134,6 +134,8 @@ void Player::addShip(int numShips)
       changeCase(shipDirection);
     }
 
+
+    //gameBoard[row][colum] = 'S';
     //need to start updating board
     //this is where I need to user the variables shipDirection and shipPosition to place ships on a board
   }
