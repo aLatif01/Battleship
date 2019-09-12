@@ -3,7 +3,8 @@
 
 Player::Player()
 {
-
+  shipDirection = "";
+  shipPosition = "";
 }
 
 void Player::createBoard()
@@ -116,14 +117,12 @@ void Player::addShip(int numShips)
     //following code asks user in which direction he would like the ship to be placed
     //need to cross check with while loop that the user either entered HORIZONTAL or VERTICAL
     std::cout << "Which direction would you like to place ship " << i <<"?\n (Horizontal or vertical)\n >";
-    std::string shipDirection = "";
     std::cin >> shipDirection;
     changeCase(shipDirection);
 
     //INSERT function to change "shipDirection" to all upper-case
 
     //asks user where bottom-most or left-most coordinate of his ship placement
-    std::string shipPosition = "";
     if(shipDirection == "HORIZONTAL")
     {
       std::cout << "What is the left-most position you would like your ship to be placed?\n >";

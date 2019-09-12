@@ -21,6 +21,8 @@ private:
   int gameBoard[m_rows][m_cols]; //int,chars
   int m_shipCount = 0;
   std::vector<Ship> m_ships; //vector of the ship
+  std::string shipDirection;
+  std::string shipPosition;
 
   /**
   * @pre:
