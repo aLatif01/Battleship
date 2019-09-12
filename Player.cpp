@@ -1,6 +1,5 @@
 #include "Player.h"
 #include<iostream>
-
 Player::Player()
 {
 
@@ -95,6 +94,7 @@ void Player::fire(int row, char col)
   if (location == '#')
   {
     std::cout << "You have missed at location " << row << col << "\n";
+    location = 'M';
     return;
   }
   else if(location == 'M')
@@ -102,15 +102,41 @@ void Player::fire(int row, char col)
     std::cout << "You already missed at location " << row << col <<'\n';
     return;
   }
-  //if location is 'S', iterate through ships to find the hit point and allow that ship to account for the hit, then set location to '#'
-  for(int i = 0; i < m_shipCount; i++)
+  else if(location == 'S')
   {
-    if (m_ships[i].checkForHit(row, col) == true) {
-      //to do in here:
-      //1. set location to '#',
-      //2. check if m_ships[i].getLength() == 0 and if so then remove it from m_ships vector
-      //3. check if m_ships is empty and, if so, game is over because all ships are
-      //4. return;
+    for(int i = 0; i < m_shipCount; i++)
+    {
+      if (m_ships[i].checkForHit(row, col) == true) {
+        //We need to decrease the size of the vector by 1 each time they
+        //hit so the length of the ship will eventually be 0.
+        location = 'H';
+        if(shipDirection == "HORIZONTAL")
+        {
+          //m_ships[i].erase causes an error and im unsure what to do
+          //erase automatically decreases the size
+          m_ships.erase(m_ships.begin()+col);
+        }
+        else if(shipDirection == "VERTICAL")
+        {
+          //m_ships[i].erase causes an error and im unsure what to do
+          //erase automaticall decreases the size
+          m_ships.erase(m_ships.begin()+row);
+        }
+      }
+        if(m_ships[i].getLength() == 0)
+        {
+          //Line below should be m_ship[i].clear().
+          //However I'm getting the same error for erase
+          m_ships.clear();
+          m_shipCount--;
+          std::cout << "You sunk a ship! \n";
+        }
+    }
+    if(m_shipCount == 0)
+    {
+
     }
   }
+
+
 }
