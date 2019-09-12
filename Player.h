@@ -16,8 +16,8 @@ public:
   void addShip(int numbShips);
 
 private:
-  const static int m_rows = 8;
-  const static int m_cols = 8;
+  const static int m_rows = 9;
+  const static int m_cols = 9;
   char gameBoard[m_rows][m_cols];
   int m_shipCount = 0;
   std::vector<Ship> m_ships; //vector of the ship
