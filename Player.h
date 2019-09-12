@@ -13,6 +13,7 @@ public:
   void fire(int row, char col);
   char find(int row, char col); //will return the value of the board at the specified location (ex: find(3,C))
   void setShipCount(int numShips);
+  void addShip(int numbShips);
 
 private:
   const static int m_rows = 8;
@@ -20,6 +21,14 @@ private:
   int gameBoard[m_rows][m_cols]; //int,chars
   int m_shipCount = 0;
   std::vector<Ship> m_ships; //vector of the ship
+
+  /**
+  * @pre:
+  * @post: changes all string to upper case
+  * @param: std::string& word
+  * @return: nothing
+  **/
+  void changeCase(std::string &word);
 };
 #endif /* Player_h */
 

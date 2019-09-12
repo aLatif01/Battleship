@@ -108,3 +108,49 @@ void Player::fire(int row, char col)
     }
   }
 }
+
+void Player::addShip(int numShips)
+{
+  for(int i = 1, i<=numShips; i++)
+  {
+    //following code asks user in which direction he would like the ship to be placed
+    //need to cross check with while loop that the user either entered HORIZONTAL or VERTICAL
+    std::cout << "Which direction would you like to place ship " << i <<"?\n (Horizontal or vertical)\n >";
+    std::string shipDirection = "";
+    std::cin >> shipDirection;
+    changeCase(shipDirection);
+
+    //INSERT function to change "shipDirection" to all upper-case
+
+    //asks user where bottom-most or left-most coordinate of his ship placement
+    std::string shipPosition = "";
+    if(shipDirection == "HORIZONTAL")
+    {
+      std::cout << "What is the left-most position you would like your ship to be placed?\n >";
+      std::cin >> shipPosition;
+      changeCase(shipDirection);
+    }
+    else if(shipDirection == "VERTICAL")
+    {
+      std::cout << "What is the bottom-most position you would like your ship to be placed?\n >";
+      std::cin >> shipPosition;
+      changeCase(shipDirection);
+    }
+
+    //this is where I need to user the variables shipDirection and shipPosition to place ships on a board
+  }
+}
+
+void Player::changeCase(std::string &word)
+{
+    int length = 0;
+    std::locale loc;
+    length = word.length();
+    std::string swap = word;
+    for (int i = 0; i < length; i++)
+    {
+        char upper = toupper(word[i],loc);
+        swap[i] = upper;
+    }
+    word = swap;
+}
