@@ -3,7 +3,6 @@
 #include <utility>
 #include<iostream>
 #include "Ship.h"
-
 class Player
 {
 public:
@@ -14,11 +13,13 @@ public:
   char find(int row, char col); //will return the value of the board at the specified location (ex: find(3,C))
   void setShipCount(int numShips);
 
+
 private:
   const static int m_rows = 8;
   const static int m_cols = 8;
   int gameBoard[m_rows][m_cols]; //int,chars
   int m_shipCount = 0;
+  std::string shipDirection;
   std::vector<Ship> m_ships; //vector of the ship
 };
 #endif /* Player_h */
