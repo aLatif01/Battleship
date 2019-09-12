@@ -92,8 +92,14 @@ char Player::find(int row, char col) //will return the value of the board at the
 void Player::fire(int row, char col)
 {
   char location = find(row, col);
-  if (location == '#' || location == 'M') {
-    std::cout << "No ship at location " << row << col <<'\n';
+  if (location == '#')
+  {
+    std::cout << "You have missed at location " << row << col << "\n";
+    return;
+  }
+  else if(location == 'M')
+  {
+    std::cout << "You already missed at location " << row << col <<'\n';
     return;
   }
   //if location is 'S', iterate through ships to find the hit point and allow that ship to account for the hit, then set location to '#'
