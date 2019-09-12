@@ -36,52 +36,51 @@ void Player::printBoard()
   }
 }
 
-char Player::find(int row, char col) //will return the value of the board at the specified location (ex: find(3,C))
+char Player::find(char col, int row) //will return the value of the board at the specified location (ex: find(3,C))
 {
   //to do
-
   if (row >= 1 && row < 9)
   {
     if(col == 'A' || col == 'B' || col == 'C' || col == 'D' || col == 'E' || col == 'F' || col == 'G' || col == 'H')
     {
         if(col == 'A')
         {
-            return (gameBoard[row][0]);
+            return (gameBoard[1][row]);
         }
 
         if(col == 'B')
         {
-            return (gameBoard[row][1]);
+            return (gameBoard[2][row]);
         }
 
         if(col == 'C')
         {
-            return (gameBoard[row][2]);
+            return (gameBoard[3][row]);
         }
 
         if(col == 'D')
         {
-            return (gameBoard[row][3]);
+            return (gameBoard[4][row]);
         }
 
         if(col == 'E')
         {
-            return (gameBoard[row][4]);
+            return (gameBoard[5][row]);
         }
 
         if(col == 'F')
         {
-           return (gameBoard[row][5]);
+           return (gameBoard[6][row]);
         }
 
         if(col == 'G')
         {
-            return (gameBoard[row][6]);
+            return (gameBoard[7][row]);
         }
 
         if(col == 'H')
         {
-            return (gameBoard[row][7]);
+            return (gameBoard[8][row]);
         }
       }
     }
@@ -93,25 +92,25 @@ void Player::setShipCount(int numShips)
   m_shipCount = numShips;
 }
 
-void Player::fire(int row, char col)
+void Player::fire(char col, int row)
 {
-  char location = find(row, col);
+  char location = find(col, row);
   if (location == '#')
   {
-    std::cout << "You have missed at location " << row << col << "\n";
+    std::cout << "You have missed at location " << col << row << "\n";
     location = 'M';
     return;
   }
   else if(location == 'M')
   {
-    std::cout << "You already missed at location " << row << col <<'\n';
+    std::cout << "You already missed at location " << col << row <<'\n';
     return;
   }
   else if(location == 'S')
   {
     for(int i = 0; i < m_shipCount; i++)
     {
-      if (m_ships[i].checkForHit(row, col) == true) {
+      if (m_ships[i].checkForHit(col, row) == true) {
         //We need to decrease the size of the vector by 1 each time they
         //hit so the length of the ship will eventually be 0.
         location = 'H';

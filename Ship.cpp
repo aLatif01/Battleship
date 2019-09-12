@@ -15,20 +15,20 @@ int Ship::getLength()
   return m_shipLength;
 }
 
-void Ship::addCoordinate(int row, int col)
+void Ship::addCoordinate(int col, int row)
 {
   std::pair<int,int> newPair;
-  newPair.first = row;
-  newPair.second = col;
+  newPair.first = col;
+  newPair.second = row;
   m_pairs.push_back(newPair);
   m_shipLength++;
 }
 
-bool Ship::checkForHit(int row, int col)
+bool Ship::checkForHit(int col, int row)
 {
   std::pair<int,int> checkPair;
-  checkPair.first = row;
-  checkPair.second = col;
+  checkPair.first = col;
+  checkPair.second = row;
   if(std::find(m_pairs.begin(), m_pairs.end(), checkPair) != m_pairs.end()) {
     //will enter this if statement if the pair is in the ships
     //we do NOT need to remove the specific element from the vector because this checkForHit function will
