@@ -37,52 +37,51 @@ void Player::printBoard()
   }
 }
 
-char Player::find(int row, char col) //will return the value of the board at the specified location (ex: find(3,C))
+char Player::find(char col, int row) //will return the value of the board at the specified location (ex: find(3,C))
 {
   //to do
-
   if (row >= 1 && row < 9)
   {
     if(col == 'A' || col == 'B' || col == 'C' || col == 'D' || col == 'E' || col == 'F' || col == 'G' || col == 'H')
     {
         if(col == 'A')
         {
-            return (gameBoard[row][0]);
+            return (gameBoard[1][row]);
         }
 
         if(col == 'B')
         {
-            return (gameBoard[row][1]);
+            return (gameBoard[2][row]);
         }
 
         if(col == 'C')
         {
-            return (gameBoard[row][2]);
+            return (gameBoard[3][row]);
         }
 
         if(col == 'D')
         {
-            return (gameBoard[row][3]);
+            return (gameBoard[4][row]);
         }
 
         if(col == 'E')
         {
-            return (gameBoard[row][4]);
+            return (gameBoard[5][row]);
         }
 
         if(col == 'F')
         {
-           return (gameBoard[row][5]);
+           return (gameBoard[6][row]);
         }
 
         if(col == 'G')
         {
-            return (gameBoard[row][6]);
+            return (gameBoard[7][row]);
         }
 
         if(col == 'H')
         {
-            return (gameBoard[row][7]);
+            return (gameBoard[8][row]);
         }
       }
     }
@@ -90,17 +89,17 @@ char Player::find(int row, char col) //will return the value of the board at the
 
 
 
-void Player::fire(int row, char col)
+void Player::fire(char col, int row)
 {
-  char location = find(row, col);
+  char location = find(col, row);
   if (location == '#' || location == 'M') {
-    std::cout << "No ship at location " << row << col <<'\n';
+    std::cout << "No ship at location " << col << row <<'\n';
     return;
   }
   //if location is 'S', iterate through ships to find the hit point and allow that ship to account for the hit, then set location to '#'
   for(int i = 0; i < m_shipCount; i++)
   {
-    if (m_ships[i].checkForHit(row, col) == true) {
+    if (m_ships[i].checkForHit(col, row) == true) {
       //to do in here:
       //1. set location to '#',
       //2. check if m_ships[i].getLength() == 0 and if so then remove it from m_ships vector

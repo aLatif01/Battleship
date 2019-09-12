@@ -10,15 +10,15 @@ public:
   Player();
   void createBoard();
   void printBoard();
-  void fire(int row, char col);
-  char find(int row, char col); //will return the value of the board at the specified location (ex: find(3,C))
+  void fire(char col, int row);
+  char find(char col, int row); //will return the value of the board at the specified location (ex: find(3,C))
   void setShipCount(int numShips);
   void addShip(int numbShips);
 
 private:
   const static int m_rows = 9;
   const static int m_cols = 9;
-  char gameBoard[m_rows][m_cols];
+  char gameBoard[m_cols][m_rows];
   int m_shipCount = 0;
   std::vector<Ship> m_ships; //vector of the ship
   std::string shipDirection;

@@ -26,7 +26,10 @@ int main(int argc, const char* argv[])
 
   Player player1;
   player1.createBoard();
+
+  player1.fire('A',1);
   player1.printBoard();
+
 
   for(int i = 0; i < numberShips; i++)
   {
