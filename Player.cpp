@@ -1,6 +1,5 @@
 #include "Player.h"
 #include<iostream>
-
 Player::Player()
 {
   shipDirection = "";
@@ -93,21 +92,55 @@ char Player::find(int row, char col) //will return the value of the board at the
 void Player::fire(int row, char col)
 {
   char location = find(row, col);
-  if (location == '#' || location == 'M') {
-    std::cout << "No ship at location " << row << col <<'\n';
+  if (location == '#')
+  {
+    std::cout << "You have missed at location " << row << col << "\n";
+    location = 'M';
     return;
   }
-  //if location is 'S', iterate through ships to find the hit point and allow that ship to account for the hit, then set location to '#'
-  for(int i = 0; i < m_shipCount; i++)
+  else if(location == 'M')
   {
-    if (m_ships[i].checkForHit(row, col) == true) {
-      //to do in here:
-      //1. set location to '#',
-      //2. check if m_ships[i].getLength() == 0 and if so then remove it from m_ships vector
-      //3. check if m_ships is empty and, if so, game is over because all ships are
-      //4. return;
+    std::cout << "You already missed at location " << row << col <<'\n';
+    return;
+  }
+  else if(location == 'S')
+  {
+    for(int i = 0; i < m_shipCount; i++)
+    {
+      if (m_ships[i].checkForHit(row, col) == true) {
+        //We need to decrease the size of the vector by 1 each time they
+        //hit so the length of the ship will eventually be 0.
+        location = 'H';
+        if(shipDirection == "HORIZONTAL")
+        {
+          //m_ships[i].erase causes an error and im unsure what to do
+          //erase automatically decreases the size
+          m_ships.erase(m_ships.begin()+col);
+        }
+        else if(shipDirection == "VERTICAL")
+        {
+          //m_ships[i].erase causes an error and im unsure what to do
+          //erase automaticall decreases the size
+          m_ships.erase(m_ships.begin()+row);
+        }
+      }
+        if(m_ships[i].getLength() == 0)
+        {
+          //Line below should be m_ship[i].clear().
+          //However I'm getting the same error for erase
+          m_ships.clear();
+          m_shipCount--;
+          std::cout << "You sunk a ship! \n";
+        }
+    }
+    if(m_shipCount == 0)
+    {
+      //print the win or loss message but we should do this
+      // in a different function that only checks for this
     }
   }
+
+
 }
 
 void Player::addShip(int numShips)

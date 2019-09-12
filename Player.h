@@ -3,7 +3,6 @@
 #include <utility>
 #include<iostream>
 #include "Ship.h"
-
 class Player
 {
 public:
@@ -15,11 +14,13 @@ public:
   void setShipCount(int numShips);
   void addShip(int numbShips);
 
+
 private:
   const static int m_rows = 9;
   const static int m_cols = 9;
   char gameBoard[m_rows][m_cols];
   int m_shipCount = 0;
+  std::string shipDirection;
   std::vector<Ship> m_ships; //vector of the ship
   std::string shipDirection;
   std::string shipPosition;
