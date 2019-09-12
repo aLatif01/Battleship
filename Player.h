@@ -3,7 +3,6 @@
 #include <utility>
 #include<iostream>
 #include "Ship.h"
-
 class Player
 {
 public:
@@ -14,6 +13,7 @@ public:
   char find(char col, int row); //will return the value of the board at the specified location (ex: find(3,C))
   void setShipCount(int numShips);
   void addShip(int numbShips);
+
 
 private:
   const static int m_rows = 9;
