@@ -9,8 +9,8 @@ class Ship
 public:
   Ship(int length);
   int getLength();
-  void addCoordinate(int row, int col);
-  bool checkForHit(int row, int col);
+  void addCoordinate(int col, int row);
+  bool checkForHit(int col, int row);
 
 private:
   int m_shipLength = 0;
