@@ -25,7 +25,7 @@ private:
   std::string shipPosition;
 
   /**
-  * @pre:
+  * @pre: valid player object exists
   * @post: changes all string to upper case
   * @param: std::string& word
   * @return: nothing
