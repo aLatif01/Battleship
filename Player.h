@@ -9,10 +9,12 @@ public:
   Player();
   void createBoard();
   void printBoard();
-  void fire(char col, int row);
-  char find(char col, int row); //will return the value of the board at the specified location (ex: find(3,C))
+  void fire(int row, char col);
+  char find(int row, char col); //will return the value of the board at the specified location (ex: find(3,C))
   void setShipCount(int numShips);
   void addShip(int numbShips);
+
+  int convertColumn(char col); // convert character to integer
 
 
 private:
