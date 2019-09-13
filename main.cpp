@@ -1,5 +1,5 @@
 #include "Player.h"
-#include <limits>   // QuiPhan: i cant compile without these
+#include <limits>   //  i cant compile without these in WINDOW
 using namespace std;
 
 void isInt(int& checkInt)
