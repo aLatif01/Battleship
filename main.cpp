@@ -1,6 +1,7 @@
 #include "Player.h"
-#include <limits>   // QuiPhan: i cant compile without these
-using namespace std; 
+#include <limits>   //  i cant compile without these in WINDOW
+using namespace std;
+>>>>>>> QUIbranch
 
 void isInt(int& checkInt)
 {
