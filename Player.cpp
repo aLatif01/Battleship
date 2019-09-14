@@ -147,29 +147,74 @@ void Player::addShip(int numShips)
   for(int i = 1; i <= numShips; i++)
   {
     //following code asks user in which direction he would like the ship to be placed
-    //need to cross check with while loop that the user either entered HORIZONTAL or VERTICAL
-    std::cout << "Which direction would you like to place ship " << i <<"?\n REMINDER: SHIP LENGTH IS BASED ON SHIP NUMBER \n (Horizontal or vertical)\n >";
-    std::cin >> shipDirection;
-    changeCase(shipDirection);
-
-    //asks user where bottom-most or left-most coordinate of his ship placement
-    if(shipDirection == "HORIZONTAL")
+    bool correctInput = false;
+    while(correctInput == false)
     {
-      std::cout << "What is the left-most position you would like your ship to be placed?\n >";
-      std::cin >> shipPosition;
-      changeCase(shipDirection);
-    }
-    else if(shipDirection == "VERTICAL")
-    {
-      std::cout << "What is the bottom-most position you would like your ship to be placed?\n >";
-      std::cin >> shipPosition;
-      changeCase(shipDirection);
-    }
 
+      std::cout << "Which direction would you like to place ship " << i <<"?\n REMINDER: SHIP LENGTH IS BASED ON SHIP NUMBER \n (Horizontal or vertical)\n >";
+      std::cin >> shipDirection;
+      changeCase(shipDirection);
+
+      //asks user where bottom-most or left-most coordinate of his ship placement
+      if(shipDirection == "HORIZONTAL")
+      {
+        std::cout << "What is the left-most position you would like your ship to be placed?\n >";
+        std::cin >> shipPosition;
+        changeCase(shipPosition);
+
+        if(validCoordinate(shipPosition) == true)
+        {
+          correctInput = true;
+          //update board
+        }
+        else
+        {
+          std::cout << "Sorry, invalid coordinate.\n";
+          break;
+        }
+        //check if this is a valid shipPosition
+      }
+      else if(shipDirection == "VERTICAL")
+      {
+        correctInput = true;
+        std::cout << "What is the bottom-most position you would like your ship to be placed?\n >";
+        std::cin >> shipPosition;
+        changeCase(shipPosition);
+
+        if(validCoordinate(shipPosition) == true)
+        {
+          correctInput = true;
+          //update board
+        }
+        else
+        {
+          std::cout << "Sorry, invalid coordinate.\n";
+          break;
+        }
+        //gameBoard[shipPosition.at(0)][shipPosition.at(1)] = 'S';
+      }
+      else
+      {
+        std::cout << "Please enter a valid shipDirection\n";
+      }
+
+    }
 
     //gameBoard[column][row] = 'S';
     //need to start updating board
     //this is where I need to user the variables shipDirection and shipPosition to place ships on a board
+  }
+}
+
+bool Player::validCoordinate(std::string shipPosition)
+{
+  if((shipPosition.at(0) == 'A' || shipPosition.at(0) == 'B' || shipPosition.at(0) == 'C' || shipPosition.at(0) == 'D' || shipPosition.at(0) == 'E' || shipPosition.at(0) == 'F' || shipPosition.at(0) == 'G' || shipPosition.at(0) == 'H') && (shipPosition.at(1) == '1' || shipPosition.at(1) == '2' || shipPosition.at(1) == '3' || shipPosition.at(1) == '4' || shipPosition.at(1) == '5' || shipPosition.at(1) == '6' || shipPosition.at(1) == '7' || shipPosition.at(1) == '8'))
+  {
+    return true;
+  }
+  else
+  {
+    return false;
   }
 }
 
