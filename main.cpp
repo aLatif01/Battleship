@@ -1,4 +1,7 @@
 #include "Player.h"
+#include <limits>   //  i cant compile without these in WINDOW
+using namespace std;
+
 
 void isInt(int& checkInt)
 {

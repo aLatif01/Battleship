@@ -87,6 +87,11 @@ char Player::find(int row, char col) //will return the value of the board at the
 }
 
 
+void Player::setShipCount(int numShips)
+{
+  m_shipCount = numShips;
+}
+
 void Player::fire(int row, char col)
 {
   char location = find(row, col);
