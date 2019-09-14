@@ -12,10 +12,11 @@ public:
   void fire(int row, char col);
   char find(int row, char col); //will return the value of the board at the specified location (ex: find(3,C))
   void setShipCount(int numShips);
+
   void addShip(int numbShips);
-
+  bool validCoordinate(std::string shipPosition);
+  
   int convertColumn(char col); // convert character to integer
-
 
 private:
   const static int m_rows = 9;
