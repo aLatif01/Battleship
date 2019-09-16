@@ -3,6 +3,7 @@
 #include <utility>
 #include<iostream>
 #include "Ship.h"
+
 class Player
 {
 public:
@@ -21,8 +22,9 @@ public:
 
   void addShip(int numbShips);
   bool validCoordinate(std::string shipPosition);
-  
+
   int convertColumn(char col); // convert character to integer
+  bool checkForWin();
 
 private:
   const static int m_rows = 9;
