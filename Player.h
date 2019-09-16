@@ -14,8 +14,8 @@ public:
   void setShipCount(int numShips);
 
   void addShip(int numbShips);
-  bool validCoordinate(std::string shipPosition);
-  
+  bool validCoordinate(std::string shipPosition, std::string shipDirection, int shipSize);
+
   int convertColumn(char col); // convert character to integer
 
 private:

@@ -162,18 +162,23 @@ void Player::addShip(int numShips)
         std::cin >> shipPosition;
         changeCase(shipPosition);
 
-        if(validCoordinate(shipPosition) == true)
+        if(validCoordinate(shipPosition, shipDirection, i) == true) //this needs to check if ALL shipPosition are valid
         {
           correctInput = true;
-          //update board
+          for(int i = 1; i <= numShips; i++)
+          {
+            gameBoard[convertColumn(shipPosition.at(0))][/*convert shipPosition.at(1) to an int*/ +i-1];
+          }
+
         }
         else
         {
           std::cout << "Sorry, invalid coordinate.\n";
           break;
         }
-        //check if this is a valid shipPosition
       }
+
+
       else if(shipDirection == "VERTICAL")
       {
         correctInput = true;
@@ -181,7 +186,7 @@ void Player::addShip(int numShips)
         std::cin >> shipPosition;
         changeCase(shipPosition);
 
-        if(validCoordinate(shipPosition) == true)
+        if(validCoordinate(shipPosition, shipDirection, i) == true)
         {
           correctInput = true;
           //update board
@@ -205,11 +210,30 @@ void Player::addShip(int numShips)
   }
 }
 
-bool Player::validCoordinate(std::string shipPosition)
+bool Player::validCoordinate(std::string shipPosition, std::string shipDirection, int shipSize)
 {
   if((shipPosition.at(0) == 'A' || shipPosition.at(0) == 'B' || shipPosition.at(0) == 'C' || shipPosition.at(0) == 'D' || shipPosition.at(0) == 'E' || shipPosition.at(0) == 'F' || shipPosition.at(0) == 'G' || shipPosition.at(0) == 'H') && (shipPosition.at(1) == '1' || shipPosition.at(1) == '2' || shipPosition.at(1) == '3' || shipPosition.at(1) == '4' || shipPosition.at(1) == '5' || shipPosition.at(1) == '6' || shipPosition.at(1) == '7' || shipPosition.at(1) == '8'))
   {
-    return true;
+    if(shipDirection == "HORIZONTAL")
+    {
+      for(int i = 1; i <= shipSize; i++)
+      {
+        if(gameBoard[convertColumn(shipPosition.at(0))][/*shipPosition.at(1) converted to int*/+i-1] == '#')
+        {
+          //return true;
+        }
+      }
+    }
+    else if(shipDirection == "VERTICAL")
+    {
+      for(int i = 1; i <= shipSize; i++)
+      {
+        if(gameBoard[convertColumn(shipPosition.at(0))+i-1][/*shipPosition.at(1) converted to int*/] == '#')
+        {
+          //somehow say that if this is true then return true
+        }
+      }
+    }
   }
   else
   {
