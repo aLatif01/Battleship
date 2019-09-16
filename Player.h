@@ -10,7 +10,7 @@ public:
   Player();
   void createBoard();
   void printBoard();
-  void fire(int row, char col)
+  void fire(int row, char col);
   /**
   * @pre: verify input from user, and make sure the input for column is upper case.
   * @post: find the location that user input
