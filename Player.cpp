@@ -248,7 +248,7 @@ bool Player::validCoordinate(std::string shipPosition, std::string shipDirection
   }
   if(goodCord == shipSize)
   {
-    return true;
+    return true;d
   }
 }
 
