@@ -227,7 +227,7 @@ bool Player::validCoordinate(std::string shipPosition, std::string shipDirection
       {
         if(gameBoard[convertColumn(shipPosition.at(0))][/*shipPosition.at(1) converted to int*/+i-1] == '#')
         {
-          goodCord += 1;
+          goodCord++;
         }
       }
     }
@@ -237,7 +237,7 @@ bool Player::validCoordinate(std::string shipPosition, std::string shipDirection
       {
         if(gameBoard[convertColumn(shipPosition.at(0))+i-1][/*shipPosition.at(1) converted to int*/] == '#')
         {
-          goodCord += 1;
+          goodCord++;
         }
       }
     }
