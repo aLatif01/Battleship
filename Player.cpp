@@ -96,7 +96,7 @@ void Player::setShipCount(int numShips)
   m_shipCount = numShips;
 }
 
-void Player::fire(char col, int row)
+void Player::fire(int row, char col)
 {
   char location = find(row, col);
   if (location == 'F')

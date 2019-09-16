@@ -10,7 +10,7 @@ public:
   Player();
   void createBoard();
   void printBoard();
-  void fire(char col, int row);
+  void fire(int row, char col)
   /**
   * @pre: verify input from user, and make sure the input for column is upper case.
   * @post: find the location that user input
@@ -22,7 +22,7 @@ public:
 
   void addShip(int numbShips);
   bool validCoordinate(std::string shipPosition);
-  
+
   int convertColumn(char col); // convert character to integer
   bool checkForWin();
 
