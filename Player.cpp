@@ -87,6 +87,11 @@ char Player::find(int row, char col) //will return the value of the board at the
 }
 
 
+void Player::setShipCount(int numShips)
+{
+  m_shipCount = numShips;
+}
+
 void Player::fire(int row, char col)
 {
   char location = find(row, col);
@@ -205,6 +210,7 @@ void Player::addShip(int numShips)
 
     }
 
+    //gameBoard[column][row] = 'S';
     //need to start updating board
     //this is where I need to user the variables shipDirection and shipPosition to place ships on a board
   }

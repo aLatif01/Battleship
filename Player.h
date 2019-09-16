@@ -10,6 +10,12 @@ public:
   void createBoard();
   void printBoard();
   void fire(int row, char col);
+  /**
+  * @pre: verify input from user, and make sure the input for column is upper case.
+  * @post: find the location that user input
+  * @param: int row and char column
+  * @return: char array
+  **/
   char find(int row, char col); //will return the value of the board at the specified location (ex: find(3,C))
   void setShipCount(int numShips);
 
