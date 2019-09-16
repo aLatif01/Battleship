@@ -172,9 +172,8 @@ void Player::addShip(int numShips)
           correctInput = true;
           for(int i = 1; i <= numShips; i++)
           {
-            gameBoard[convertColumn(shipPosition.at(0))][/*convert shipPosition.at(1) to an int*/ +i-1];
+            gameBoard[convertColumn(shipPosition.at(0))][atoi(shipPosition.c_str())+i-1] = 'S';
           }
-
         }
         else
         {
@@ -194,38 +193,36 @@ void Player::addShip(int numShips)
         if(validCoordinate(shipPosition, shipDirection, i) == true)
         {
           correctInput = true;
-          //update board
+          for(int i = 1; i <= numShips; i++)
+          {
+            gameBoard[convertColumn(shipPosition.at(0))+i-1][atoi(shipPosition.c_str())] = 'S';
+          }
         }
         else
         {
           std::cout << "Sorry, invalid coordinate.\n";
           break;
         }
-        //gameBoard[shipPosition.at(0)][shipPosition.at(1)] = 'S';
       }
       else
       {
-        std::cout << "Please enter a valid shipDirection\n";
+        std::cout << "Please enter a valid ship direction\n";
       }
 
-    }
-
-    //gameBoard[column][row] = 'S';
-    //need to start updating board
-    //this is where I need to user the variables shipDirection and shipPosition to place ships on a board
-  }
-}
+    } //end while loop
+  } //end for loop
+} //end addShip()
 
 bool Player::validCoordinate(std::string shipPosition, std::string shipDirection, int shipSize)
 {
+  int goodCord = 0;
   if((shipPosition.at(0) == 'A' || shipPosition.at(0) == 'B' || shipPosition.at(0) == 'C' || shipPosition.at(0) == 'D' || shipPosition.at(0) == 'E' || shipPosition.at(0) == 'F' || shipPosition.at(0) == 'G' || shipPosition.at(0) == 'H') && (shipPosition.at(1) == '1' || shipPosition.at(1) == '2' || shipPosition.at(1) == '3' || shipPosition.at(1) == '4' || shipPosition.at(1) == '5' || shipPosition.at(1) == '6' || shipPosition.at(1) == '7' || shipPosition.at(1) == '8'))
   {
-    int goodCord = 0;
     if(shipDirection == "HORIZONTAL")
     {
       for(int i = 1; i <= shipSize; i++)
       {
-        if(gameBoard[convertColumn(shipPosition.at(0))][/*shipPosition.at(1) converted to int*/+i-1] == '#')
+        if(gameBoard[convertColumn(shipPosition.at(0))][atoi(shipPosition.c_str())+i-1] == '#')
         {
           goodCord++;
         }
@@ -235,7 +232,7 @@ bool Player::validCoordinate(std::string shipPosition, std::string shipDirection
     {
       for(int i = 1; i <= shipSize; i++)
       {
-        if(gameBoard[convertColumn(shipPosition.at(0))+i-1][/*shipPosition.at(1) converted to int*/] == '#')
+        if(gameBoard[convertColumn(shipPosition.at(0))+i-1][atoi(shipPosition.c_str())] == '#')
         {
           goodCord++;
         }
@@ -248,7 +245,7 @@ bool Player::validCoordinate(std::string shipPosition, std::string shipDirection
   }
   if(goodCord == shipSize)
   {
-    return true;d
+    return true;
   }
 }
 
