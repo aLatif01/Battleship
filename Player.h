@@ -22,7 +22,7 @@ public:
   void addShip(int numbShips);
 
   int convertColumn(char col); // convert character to integer
-  bool checkForWin();s
+  bool checkForWin();
 
 
 private:
@@ -45,4 +45,3 @@ private:
 #endif /* Player_h */
 
 //we will still need to deal with the placing of ships which will include constructing the ships by size and adding them to m_ships vector
-

@@ -15,9 +15,6 @@ void Player::createBoard()
       gameBoard[x][y] = '#'; //BLANK BOARD SPACE
     }
   }
-  gameBoard[1][4] = 'S';
-  gameBoard[2][4] = 'S';
-  gameBoard[3][4] = 'S';
 }
 
 void Player::printBoard()
@@ -104,7 +101,7 @@ void Player::fire(char col, int row)
   char location = find(row, col);
   if (location == 'F')
   {
-    std::cout<<"Location is invalid "<<endl;
+    std::cout<<"Location is invalid "<<std::endl;
   }
   if (location == '#')
   {
@@ -129,7 +126,7 @@ void Player::fire(char col, int row)
 
         if(m_ships[i].getLength() == 0)
         {
-          delete m_ships[i];
+          //delete m_ships[i];  this line is invalid
           m_shipCount--;
           std::cout << "You sunk a ship! \n";
         }
@@ -138,13 +135,6 @@ void Player::fire(char col, int row)
   }
 }
 }
-
-  // if(m_shipCount == 0)
-  // {check for iwn true for//
-  //   //print the win or loss message but we should do this
-  //   // in a different function that only checks for this
-  // }
-
 
 
 
@@ -259,4 +249,3 @@ int Player::convertColumn(char col)
       }
     }
 }
-
