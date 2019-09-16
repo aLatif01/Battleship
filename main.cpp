@@ -1,4 +1,7 @@
 #include "Player.h"
+#include <limits>   //  i cant compile without these in WINDOW
+using namespace std;
+
 
 void isInt(int& checkInt)
 {
@@ -15,7 +18,7 @@ void isInt(int& checkInt)
 
 int main(int argc, const char* argv[])
 {
-  std::cout << "\n\nWelcome to myBattleship!\n\n";
+  std::cout << "\n\nWelcome to Battleship!\n\n";
   int numberShips = 0;
 
   while(numberShips <= 0 || numberShips > 5)
@@ -26,6 +29,27 @@ int main(int argc, const char* argv[])
 
   Player player1;
   player1.createBoard();
+
+
+  player1.fire(1, 'E');
+  player1.fire(2, 'E');
+  player1.fire(3, 'E');
+  player1.fire(4, 'E');
+  player1.fire(5, 'E');
+  player1.fire(6, 'E');
+  player1.fire(7, 'E');
+  player1.fire(8, 'E');
+
+
+
+
+  player1.printBoard();
+
+
+  for(int i = 0; i < numberShips; i++)
+  {
+    //call setShips() [AUSTIN] - direction & coordinates
+  }
 
   //1. Player 1 determines number of ships to play with (FORCED VALID INPUT)
   //2. Player 1's board is created and they begin placing ships
