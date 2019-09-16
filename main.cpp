@@ -31,7 +31,7 @@ int main(int argc, const char* argv[])
   player1.createBoard();
 
 
-  player1.fire(1, 'E');
+  player1.fire(1, 'A');
   player1.fire(2, 'E');
   player1.fire(3, 'E');
   player1.fire(4, 'E');
@@ -39,7 +39,6 @@ int main(int argc, const char* argv[])
   player1.fire(6, 'E');
   player1.fire(7, 'E');
   player1.fire(8, 'E');
-
 
 
 

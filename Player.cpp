@@ -15,6 +15,9 @@ void Player::createBoard()
       gameBoard[x][y] = '#'; //BLANK BOARD SPACE
     }
   }
+  gameBoard[1][4] = 'S';
+  gameBoard[2][4] = 'S';
+  gameBoard[3][4] = 'S';
 }
 
 void Player::printBoard()
@@ -83,6 +86,10 @@ char Player::find(int row, char col) //will return the value of the board at the
             return (gameBoard[row][8]);
         }
       }
+      else
+      {
+        return 'F';
+      }
     }
 }
 
@@ -92,9 +99,13 @@ void Player::setShipCount(int numShips)
   m_shipCount = numShips;
 }
 
-void Player::fire(int row, char col)
+void Player::fire(char col, int row)
 {
   char location = find(row, col);
+  if (location == 'F')
+  {
+    std::cout<<"Location is invalid "<<endl;
+  }
   if (location == '#')
   {
     std::cout << "You have missed at location " << col << row << "\n";
@@ -115,36 +126,38 @@ void Player::fire(int row, char col)
         //hit so the length of the ship will eventually be 0.
         location = 'H';
 
-        if(shipDirection == "HORIZONTAL")
-        {
-          //m_ships[i].erase causes an error and im unsure what to do
-          //erase automatically decreases the size
-          m_ships.erase(m_ships.begin()+col);
-        }
-        else if(shipDirection == "VERTICAL")
-        {
-          //m_ships[i].erase causes an error and im unsure what to do
-          //erase automaticall decreases the size
-          m_ships.erase(m_ships.begin()+row);
-        }
-      }
+
         if(m_ships[i].getLength() == 0)
         {
-          //Line below should be m_ship[i].clear().
-          //However I'm getting the same error for erase
-          m_ships.clear();
+          delete m_ships[i];
           m_shipCount--;
           std::cout << "You sunk a ship! \n";
         }
     }
-    if(m_shipCount == 0)
-    {
-      //print the win or loss message but we should do this
-      // in a different function that only checks for this
-    }
+
   }
+}
+}
+
+  // if(m_shipCount == 0)
+  // {check for iwn true for//
+  //   //print the win or loss message but we should do this
+  //   // in a different function that only checks for this
+  // }
 
 
+
+
+bool Player::checkForWin()
+{
+  if(m_shipCount == 0)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
 }
 
 void Player::addShip(int numShips)
@@ -246,3 +259,4 @@ int Player::convertColumn(char col)
       }
     }
 }
+

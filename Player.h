@@ -3,13 +3,14 @@
 #include <utility>
 #include<iostream>
 #include "Ship.h"
+
 class Player
 {
 public:
   Player();
   void createBoard();
   void printBoard();
-  void fire(int row, char col);
+  void fire(char col, int row);
   /**
   * @pre: verify input from user, and make sure the input for column is upper case.
   * @post: find the location that user input
@@ -21,6 +22,7 @@ public:
   void addShip(int numbShips);
 
   int convertColumn(char col); // convert character to integer
+  bool checkForWin();s
 
 
 private:
@@ -43,3 +45,4 @@ private:
 #endif /* Player_h */
 
 //we will still need to deal with the placing of ships which will include constructing the ships by size and adding them to m_ships vector
+
