@@ -83,6 +83,10 @@ char Player::find(int row, char col) //will return the value of the board at the
             return (gameBoard[row][8]);
         }
       }
+      else
+      {
+        return 'F';
+      }
     }
 }
 
@@ -95,6 +99,10 @@ void Player::setShipCount(int numShips)
 void Player::fire(int row, char col)
 {
   char location = find(row, col);
+  if (location == 'F')
+  {
+    std::cout<<"Location is invalid "<<std::endl;
+  }
   if (location == '#')
   {
     std::cout << "You have missed at location " << col << row << "\n";
@@ -115,36 +123,31 @@ void Player::fire(int row, char col)
         //hit so the length of the ship will eventually be 0.
         location = 'H';
 
-        if(shipDirection == "HORIZONTAL")
-        {
-          //m_ships[i].erase causes an error and im unsure what to do
-          //erase automatically decreases the size
-          m_ships.erase(m_ships.begin()+col);
-        }
-        else if(shipDirection == "VERTICAL")
-        {
-          //m_ships[i].erase causes an error and im unsure what to do
-          //erase automaticall decreases the size
-          m_ships.erase(m_ships.begin()+row);
-        }
-      }
+
         if(m_ships[i].getLength() == 0)
         {
-          //Line below should be m_ship[i].clear().
-          //However I'm getting the same error for erase
-          m_ships.clear();
+          //delete m_ships[i];  this line is invalid
           m_shipCount--;
           std::cout << "You sunk a ship! \n";
         }
     }
-    if(m_shipCount == 0)
-    {
-      //print the win or loss message but we should do this
-      // in a different function that only checks for this
-    }
+
   }
+}
+}
 
 
+
+bool Player::checkForWin()
+{
+  if(m_shipCount == 0)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
 }
 
 void Player::addShip(int numShips)
@@ -167,18 +170,22 @@ void Player::addShip(int numShips)
         std::cin >> shipPosition;
         changeCase(shipPosition);
 
-        if(validCoordinate(shipPosition) == true)
+        if(validCoordinate(shipPosition, shipDirection, i) == true) //this needs to check if ALL shipPosition are valid
         {
           correctInput = true;
-          //update board
+          for(int i = 1; i <= numShips; i++)
+          {
+            gameBoard[convertColumn(shipPosition.at(0))][atoi(shipPosition.c_str())+i-1] = 'S';
+          }
         }
         else
         {
           std::cout << "Sorry, invalid coordinate.\n";
           break;
         }
-        //check if this is a valid shipPosition
       }
+
+
       else if(shipDirection == "VERTICAL")
       {
         correctInput = true;
@@ -186,40 +193,62 @@ void Player::addShip(int numShips)
         std::cin >> shipPosition;
         changeCase(shipPosition);
 
-        if(validCoordinate(shipPosition) == true)
+        if(validCoordinate(shipPosition, shipDirection, i) == true)
         {
           correctInput = true;
-          //update board
+          for(int i = 1; i <= numShips; i++)
+          {
+            gameBoard[convertColumn(shipPosition.at(0))+i-1][atoi(shipPosition.c_str())] = 'S';
+          }
         }
         else
         {
           std::cout << "Sorry, invalid coordinate.\n";
           break;
         }
-        //gameBoard[shipPosition.at(0)][shipPosition.at(1)] = 'S';
       }
       else
       {
-        std::cout << "Please enter a valid shipDirection\n";
+        std::cout << "Please enter a valid ship direction\n";
       }
 
-    }
+    } //end while loop
+  } //end for loop
+} //end addShip()
 
-    //gameBoard[column][row] = 'S';
-    //need to start updating board
-    //this is where I need to user the variables shipDirection and shipPosition to place ships on a board
-  }
-}
-
-bool Player::validCoordinate(std::string shipPosition)
+bool Player::validCoordinate(std::string shipPosition, std::string shipDirection, int shipSize)
 {
+  int goodCord = 0;
   if((shipPosition.at(0) == 'A' || shipPosition.at(0) == 'B' || shipPosition.at(0) == 'C' || shipPosition.at(0) == 'D' || shipPosition.at(0) == 'E' || shipPosition.at(0) == 'F' || shipPosition.at(0) == 'G' || shipPosition.at(0) == 'H') && (shipPosition.at(1) == '1' || shipPosition.at(1) == '2' || shipPosition.at(1) == '3' || shipPosition.at(1) == '4' || shipPosition.at(1) == '5' || shipPosition.at(1) == '6' || shipPosition.at(1) == '7' || shipPosition.at(1) == '8'))
   {
-    return true;
+    if(shipDirection == "HORIZONTAL")
+    {
+      for(int i = 1; i <= shipSize; i++)
+      {
+        if(gameBoard[convertColumn(shipPosition.at(0))][atoi(shipPosition.c_str())+i-1] == '#')
+        {
+          goodCord++;
+        }
+      }
+    }
+    else if(shipDirection == "VERTICAL")
+    {
+      for(int i = 1; i <= shipSize; i++)
+      {
+        if(gameBoard[convertColumn(shipPosition.at(0))+i-1][atoi(shipPosition.c_str())] == '#')
+        {
+          goodCord++;
+        }
+      }
+    }
   }
   else
   {
     return false;
+  }
+  if(goodCord == shipSize)
+  {
+    return true;
   }
 }
 
