@@ -29,6 +29,8 @@ int main(int argc, const char* argv[])
 
   Player player1;
   player1.createBoard();
+  player1.printBoard();
+  player1.addShip(numberShips);
   //have player one set their ships using addShip(numberShips)
   //do all this again for player 2
 
@@ -37,6 +39,7 @@ int main(int argc, const char* argv[])
 
 
   //TESTS:
+  /*
   player1.fire(1, 'E');
   player1.fire(2, 'E');
   player1.fire(3, 'E');
@@ -46,7 +49,7 @@ int main(int argc, const char* argv[])
   player1.fire(7, 'E');
   player1.fire(8, 'E');
   player1.printBoard();
-
+  */
 
 
 

@@ -159,14 +159,14 @@ void Player::addShip(int numShips)
     while(correctInput == false)
     {
 
-      std::cout << "Which direction would you like to place ship " << i <<"?\n REMINDER: SHIP LENGTH IS BASED ON SHIP NUMBER \n (Horizontal or vertical)\n >";
+      std::cout << "\n\nWhich direction would you like to place ship " << i <<"?\nREMINDER: SHIP LENGTH IS BASED ON SHIP NUMBER \n(Horizontal or vertical)\n\n>";
       std::cin >> shipDirection;
       changeCase(shipDirection);
 
       //asks user where bottom-most or left-most coordinate of his ship placement
       if(shipDirection == "HORIZONTAL")
       {
-        std::cout << "What is the left-most position you would like your ship to be placed?\n >";
+        std::cout << "What is the left-most position you would like your ship to be placed?\n>";
         std::cin >> shipPosition;
         changeCase(shipPosition);
 
@@ -181,15 +181,13 @@ void Player::addShip(int numShips)
         else
         {
           std::cout << "Sorry, invalid coordinate.\n";
-          break;
         }
       }
-
 
       else if(shipDirection == "VERTICAL")
       {
         correctInput = true;
-        std::cout << "What is the bottom-most position you would like your ship to be placed?\n >";
+        std::cout << "What is the bottom-most position you would like your ship to be placed?\n>";
         std::cin >> shipPosition;
         changeCase(shipPosition);
 
@@ -204,7 +202,6 @@ void Player::addShip(int numShips)
         else
         {
           std::cout << "Sorry, invalid coordinate.\n";
-          break;
         }
       }
       else
@@ -242,13 +239,13 @@ bool Player::validCoordinate(std::string shipPosition, std::string shipDirection
       }
     }
   }
-  else
-  {
-    return false;
-  }
   if(goodCord == shipSize)
   {
     return true;
+  }
+  else
+  {
+    return false;
   }
 }
 
