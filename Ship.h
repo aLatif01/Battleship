@@ -11,9 +11,10 @@ public:
   int getLength();
   void addCoordinate(int col, int row);
   bool checkForHit(int col, int row);
+  std::vector<int> returnCoordinates();
 
 private:
   int m_shipLength = 0;
-  std::vector<std::pair<int,int>> m_pairs; //this is a list of ordered pairs
+  std::vector< std::pair<int,int> > m_pairs; //this is a list of ordered pairs
 };
 #endif /* Ship_h */
