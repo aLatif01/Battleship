@@ -125,7 +125,7 @@ void Player::fire(int row, char col)
         {
           m_shipCount--; //Decreases the ship count once the ship is erased from the vector
           std::cout << "You sunk a ship! \n";
-          std::vector<int> shipCoords = m_ships[i].returnCoordinates()
+          std::vector<int> shipCoords = m_ships[i].returnCoordinates();
           for(int i = 0; i < shipCoords.size(); i = i+2)
           {
             gameBoard[shipCoords[i]][shipCoords[i+1]] = 'X';
