@@ -39,3 +39,14 @@ bool Ship::checkForHit(int col, int row)
     return false;
   }
 }
+
+std::vector<int> returnCoordinates()
+{
+  std::vector<int> coords;
+  for(int i = 0; i < m_pairs.size(); i++)
+  {
+    coords.push_back(m_pairs[i].first);
+    coords.push_back(m_pairs[i].second);
+  }
+  return coords;
+}
