@@ -52,7 +52,9 @@ int main(int argc, const char* argv[])
   }
 
   Player player1;
+  player1.setShipCount(numberShips);
   Player player2;
+  player2.setShipCount(numberShips);
   player1.createBoard();
   player1.printBoard();
   player1.addShip(numberShips);
@@ -104,7 +106,7 @@ int main(int argc, const char* argv[])
     if(player2.checkForWin())
     {
       gameOver = true;
-      std::cout << "\n\n Player 2 sunk all of Player 1's battleships! Player 2 wins!";
+      std::cout << "\n\n Player 2 sunk all of Player 1's battleships! Player 2 wins! \n";
     }
   }
 
