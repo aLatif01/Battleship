@@ -179,9 +179,9 @@ void Player::addShip(int numShips)
         if(validCoordinate(shipRow, shipColumn, shipDirection, i) == true) //this needs to check if ALL shipPosition are valid
         {
           correctInput = true;
-          for(int i = 1; i <= numShips; i++)
+          for(int j = 1; j <= i; j++)
           {
-            gameBoard[shipRow][(convertColumn(shipColumn))+i-1] = 'S';
+            gameBoard[shipRow][(convertColumn(shipColumn))+j-1] = 'S';
           }
         }
         else
@@ -201,9 +201,9 @@ void Player::addShip(int numShips)
         if(validCoordinate(shipRow, shipColumn, shipDirection, i) == true)
         {
           correctInput = true;
-          for(int i = 1; i <= numShips; i++)
+          for(int j = 1; j <= i; j++)
           {
-            gameBoard[shipRow+i-1][convertColumn(shipColumn)] = 'S';
+            gameBoard[shipRow-j+1][convertColumn(shipColumn)] = 'S';
           }
         }
         else
@@ -239,7 +239,7 @@ bool Player::validCoordinate(int shipRow, char shipColumn, std::string shipDirec
     {
       for(int i = 1; i <= shipSize; i++)
       {
-        if(gameBoard[shipRow][convertColumn(shipColumn)+i-1] == '#')
+        if(gameBoard[shipRow-i+1][convertColumn(shipColumn)] == '#')
         {
           goodCord++;
         }

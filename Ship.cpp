@@ -40,7 +40,7 @@ bool Ship::checkForHit(int col, int row)
   }
 }
 
-std::vector<int> returnCoordinates()
+std::vector<int> Ship::returnCoordinates()
 {
   std::vector<int> coords;
   for(int i = 0; i < m_pairs.size(); i++)

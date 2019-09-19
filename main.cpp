@@ -54,6 +54,7 @@ int main(int argc, const char* argv[])
   Player player1;
   Player player2;
   player1.createBoard();
+  player1.printBoard();
   player1.addShip(numberShips);
   //have player one set their ships using addShip(numberShips)
   //do all this again for player 2
