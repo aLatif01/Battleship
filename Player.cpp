@@ -192,6 +192,7 @@ void Player::addShip(int numShips)
         std::cout << "What is the bottom-most position you would like your ship to be placed?\n >";
         std::cin >> shipPosition;
         changeCase(shipPosition);
+        std::cout << shipPosition << std::endl;
 
         if(validCoordinate(shipPosition, shipDirection, i) == true)
         {

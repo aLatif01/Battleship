@@ -2,7 +2,6 @@
 #include <limits>   //  i cant compile without these in WINDOW
 using namespace std;
 
-
 void isInt(int& checkInt)
 {
   std::cin >> checkInt;
@@ -30,6 +29,8 @@ int main(int argc, const char* argv[])
   Player player1;
   player1.createBoard();
   //have player one set their ships using addShip(numberShips)
+  player1.setShipCount(numberShips);
+  player1.addShip(numberShips);
   //do all this again for player 2
 
   //ships are now set, so begin letting players fire onto the other player's board
@@ -39,16 +40,7 @@ int main(int argc, const char* argv[])
   //TESTS:
   player1.fire(1, 'E');
   player1.fire(2, 'E');
-  player1.fire(3, 'E');
-  player1.fire(4, 'E');
-  player1.fire(5, 'E');
-  player1.fire(6, 'E');
-  player1.fire(7, 'E');
-  player1.fire(8, 'E');
   player1.printBoard();
-
-
-
 
   //each "shot" will call the fire function (example: player1.fire(guessRow, guessColumn);)
 
