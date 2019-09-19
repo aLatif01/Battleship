@@ -21,7 +21,6 @@ void Ship::addCoordinate(int col, int row)
   newPair.first = col;
   newPair.second = row;
   m_pairs.push_back(newPair);
-  m_shipLength++;
 }
 
 bool Ship::checkForHit(int col, int row)
@@ -32,11 +31,22 @@ bool Ship::checkForHit(int col, int row)
   if(std::find(m_pairs.begin(), m_pairs.end(), checkPair) != m_pairs.end()) {
     //will enter this if statement if the pair is in the ships
     //we do NOT need to remove the specific element from the vector because this checkForHit function will
-    //only be called if the space is 'S' and the space will be changed to '#' in Player.cpp right after this function finishes
+    //only be called if the space is 'S' and the space will be changed to 'H' in Player.cpp right after this function finishes
     m_shipLength--;
     return true;
   }
   else {
     return false;
   }
+}
+
+std::vector<int> Ship::returnCoordinates()
+{
+  std::vector<int> coords;
+  for(int i = 0; i < m_pairs.size(); i++)
+  {
+    coords.push_back(m_pairs[i].first);
+    coords.push_back(m_pairs[i].second);
+  }
+  return coords;
 }
