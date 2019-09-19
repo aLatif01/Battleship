@@ -182,6 +182,7 @@ void Player::addShip(int numShips)
           for(int j = 1; j <= i; j++)
           {
             gameBoard[shipRow][(convertColumn(shipColumn))+j-1] = 'S';
+
           }
         }
         else

@@ -57,7 +57,11 @@ int main(int argc, const char* argv[])
   player2.setShipCount(numberShips);
   player1.createBoard();
   player1.printBoard();
+  player2.createBoard();
+  player2.printBoard();
   player1.addShip(numberShips);
+  std::cout << "\n Player 2: ";
+  player2.addShip(numberShips);
   //have player one set their ships using addShip(numberShips)
   //do all this again for player 2
 
