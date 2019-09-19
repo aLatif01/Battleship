@@ -120,22 +120,24 @@ void Player::fire(int row, char col)
   {
     for(int i = 0; i < m_shipCount; i++)
     {
-      if (m_ships[i].checkForHit(col, row) == true) {
-        //We need to decrease the size of the vector by 1 each time they
-        //hit so the length of the ship will eventually be 0.
-        location = 'H';
-
-
+      if (m_ships[i].checkForHit(col, row) == true)
+      {
+        gameBoard[row][convertColumn(col)] = 'H'; //updates board
         if(m_ships[i].getLength() == 0)
         {
-          //delete m_ships[i];  this line is invalid
-          m_shipCount--;
+          m_shipCount--; //Decreases the ship count once the ship is erased from the vector
           std::cout << "You sunk a ship! \n";
+          std::vector<int> shipCoords = m_ships[i].returnCoordinates();
+          for(int i = 0; i < shipCoords.size(); i = i+2)
+          {
+            gameBoard[shipCoords[i]][shipCoords[i+1]] = 'X';
+          }
         }
-    }
 
+      }
+
+    }
   }
-}
 }
 
 
