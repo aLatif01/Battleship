@@ -80,9 +80,9 @@ int main(int argc, const char* argv[])
       isRow(row);
     }
     column = 'Z';
-    while (column!='A'&&column!='B'&&column!='C'&&column!='D'&&column!='E'&&column!='F'&&column!='G')
+    while (column!='A'&&column!='B'&&column!='C'&&column!='D'&&column!='E'&&column!='F'&&column!='G'&&column!='H')
     {
-      std::cout << "Player 1, which column will you fire at (A - G)?";
+      std::cout << "Player 1, which column will you fire at (A - H)?";
       isColumn(column);
     }
     player1.fire(row, column);
@@ -101,9 +101,9 @@ int main(int argc, const char* argv[])
       isRow(row);
     }
     column = 'Z';
-    while (column!='A'&&column!='B'&&column!='C'&&column!='D'&&column!='E'&&column!='F'&&column!='G')
+    while (column!='A'&&column!='B'&&column!='C'&&column!='D'&&column!='E'&&column!='F'&&column!='G'&&column!='H')
     {
-      std::cout << "Player 2, which column will you fire at (A - G)?";
+      std::cout << "Player 2, which column will you fire at (A - H)?";
       isColumn(column);
     }
     player2.fire(row, column);
@@ -113,26 +113,6 @@ int main(int argc, const char* argv[])
       std::cout << "\n\n Player 2 sunk all of Player 1's battleships! Player 2 wins! \n";
     }
   }
-
-  //TESTS:
-
-  /*
-  player1.fire(1, 'E');
-=======
-  player1.fire(1, 'E');
->>>>>>> e97d8878cb3a333ec14bd1a3b63acca7fc6ffb8f
-  player1.fire(2, 'E');
-  player1.fire(3, 'E');
-  player1.fire(4, 'E');
-  player1.fire(5, 'E');
-  player1.fire(6, 'E');
-  player1.fire(7, 'E');
-  player1.fire(8, 'E');
-<<<<<<< HEAD
-  player1.printBoard();
-
-
-  player1.printBoard();*/
 
 
 
