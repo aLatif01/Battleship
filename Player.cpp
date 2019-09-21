@@ -179,11 +179,14 @@ void Player::addShip(int numShips)
         if(validCoordinate(shipRow, shipColumn, shipDirection, i) == true) //this needs to check if ALL shipPosition are valid
         {
           correctInput = true;
+          Ship tempShip(i);
           for(int j = 1; j <= i; j++)
           {
             gameBoard[shipRow][(convertColumn(shipColumn))+j-1] = 'S';
-
+            tempShip.addCoordinate(shipRow, (convertColumn(shipColumn))+j-1);
           }
+          m_ships.push_back(tempShip);
+          //may have to delete tempShip here, needs to be tested first
         }
         else
         {
@@ -202,10 +205,14 @@ void Player::addShip(int numShips)
         if(validCoordinate(shipRow, shipColumn, shipDirection, i) == true)
         {
           correctInput = true;
+          Ship tempShip(i);
           for(int j = 1; j <= i; j++)
           {
             gameBoard[shipRow-j+1][convertColumn(shipColumn)] = 'S';
+            tempShip.addCoordinate(shipRow, (convertColumn(shipColumn))+j-1);
           }
+          m_ships.push_back(tempShip);
+          //may have to delete tempShip here, needs to be tested first
         }
         else
         {
