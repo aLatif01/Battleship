@@ -7,23 +7,84 @@
 class Player
 {
 public:
+  /**
+  * @pre: valid player object is created
+  * @post: initializes shipDirection and shipRow
+  * @param: none
+  * @return: nothing
+  **/
   Player();
+
+  /**
+  * @pre: valid player object is created
+  * @post: creates the board for the respective player
+  * @param: none
+  * @return: nothing
+  **/
   void createBoard();
+
+  /**
+  * @pre: valid player object is created
+  * @post: prints board to the respective player
+  * @param: none
+  * @return: nothing
+  **/
   void printBoard();
+
+  /**
+  * @pre: valid player object is created
+  * @post: changes locations on players attack board depending on where the player chose to attack
+  * @param: row - the row where the player wants to attack, col - the column where the player wants to attack
+  * @return: nothing
+  **/
   void fire(int row, char col);
+
   /**
   * @pre: verify input from user, and make sure the input for column is upper case.
   * @post: find the location that user input
   * @param: int row and char column
   * @return: char array
   **/
-  char find(int row, char col); //will return the value of the board at the specified location (ex: find(3,C))
+  char find(int row, char col);
+
+  /**
+  * @pre: valid player object is created
+  * @post: setting number of ships for our private member variable
+  * @param: numShips - the number of ships the player is going to be placing on the board
+  * @return: nothing
+  **/
   void setShipCount(int numShips);
 
+  /**
+  * @pre: valid player object is created
+  * @post: sets the ships on the board and changes all valid coordinates to an 'S'
+  * @param: numShips - the number of ships the player is going to be placing on the board
+  * @return: nothing
+  **/
   void addShip(int numbShips);
+
+  /**
+  * @pre: valid player object is created
+  * @post: checks if the coordinates passed in are all within the board and of char '#'
+  * @param: shipRow - passed in row to check, shipColumn - passed in column to check, shipDirection - direction to check if valid, shipSize - size of the current ship of which to check
+  * @return: true or false depending on if the corresponding coordinates are valid
+  **/
   bool validCoordinate(int shipRow, char shipColumn, std::string shipDirection, int shipSize);
 
-  int convertColumn(char col); // convert character to integer
+  /**
+  * @pre: valid player object is created
+  * @post: lets us know the respective int for every columns char
+  * @param: col - the column we want to convert to an integer
+  * @return: returns a char's corresponding int
+  **/
+  int convertColumn(char col);
+
+  /**
+  * @pre: valid player object is created
+  * @post: tells us if this player won
+  * @param: none
+  * @return: weather or not this player won
+  **/
   bool checkForWin();
 
 private:
@@ -31,9 +92,8 @@ private:
   const static int m_cols = 9;
   char gameBoard[m_cols][m_rows];
   int m_shipCount = 0;
-  std::vector<Ship> m_ships; //vector of the ship
+  std::vector<Ship> m_ships;
   std::string shipDirection;
-  //std::string shipPosition;
   int shipRow;
   char shipColumn;
 
@@ -46,5 +106,3 @@ private:
   void changeCase(std::string &word);
 };
 #endif /* Player_h */
-
-//we will still need to deal with the placing of ships which will include constructing the ships by size and adding them to m_ships vector
