@@ -26,6 +26,8 @@ public:
   int convertColumn(char col); // convert character to integer
   bool checkForWin();
 
+  void printAttackBoard();
+
 private:
   const static int m_rows = 9;
   const static int m_cols = 9;

@@ -121,8 +121,11 @@ void Player::fire(int row, char col)
   {
     for(int i = 0; i < m_shipCount; i++)
     {
+
       if (m_ships[i].checkForHit(col, row) == true)
       {
+        std::cout << "\n~~~~~~~~\nCHECKS OUT\n~~~~~~~~~\n";
+
         attackBoard[row][convertColumn(col)] = 'H'; //updates attack board
         if(m_ships[i].getLength() == 0)
         {
@@ -131,7 +134,7 @@ void Player::fire(int row, char col)
           std::vector<int> shipCoords = m_ships[i].returnCoordinates();
           for(int i = 0; i < shipCoords.size(); i = i+2)
           {
-            attackBoard[shipCoords[i]][shipCoords[i+1]] = 'X';
+            gameBoard[shipCoords[i]][shipCoords[i+1]] = 'X';
           }
         }
 
@@ -332,4 +335,23 @@ int Player::convertColumn(char col)
           return (num);
       }
     }
+}
+
+void Player::printAttackBoard()
+{
+  int rowLabel = 1;
+  std::cout << "\tA\tB\tC\tD\tE\tF\tG\tH\n"; //COLUMN LABELS
+
+  for(int x = 1; x < m_rows; x++)
+  {
+    std::cout << rowLabel << "\t";
+    rowLabel++;
+
+    for(int y = 1; y < m_cols; y++)
+    {
+      std::cout << attackBoard[x][y] << "\t";
+    }
+
+    std::cout << std::endl;
+  }
 }
