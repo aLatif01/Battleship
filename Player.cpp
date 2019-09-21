@@ -15,6 +15,7 @@ void Player::createBoard()
     for(int y = 1; y < m_cols; y++)
     {
       gameBoard[x][y] = '#'; //BLANK BOARD SPACE
+      attackBoard[x][y] = '#'; //BLANK BOARD SPACE
     }
   }
 }
@@ -108,7 +109,7 @@ void Player::fire(int row, char col)
   if (location == '#')
   {
     std::cout << "You have missed at location " << col << row << "\n";
-    gameBoard[row][convertColumn(col)] = 'M'; // UPDATES BOARD
+    attackBoard[row][convertColumn(col)] = 'M'; // UPDATES ATTACK BOARD
     return;
   }
   else if(location == 'M')
@@ -122,7 +123,7 @@ void Player::fire(int row, char col)
     {
       if (m_ships[i].checkForHit(col, row) == true)
       {
-        gameBoard[row][convertColumn(col)] = 'H'; //updates board
+        attackBoard[row][convertColumn(col)] = 'H'; //updates attack board
         if(m_ships[i].getLength() == 0)
         {
           m_shipCount--; //Decreases the ship count once the ship is erased from the vector
@@ -130,7 +131,7 @@ void Player::fire(int row, char col)
           std::vector<int> shipCoords = m_ships[i].returnCoordinates();
           for(int i = 0; i < shipCoords.size(); i = i+2)
           {
-            gameBoard[shipCoords[i]][shipCoords[i+1]] = 'X';
+            attackBoard[shipCoords[i]][shipCoords[i+1]] = 'X';
           }
         }
 
