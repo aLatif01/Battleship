@@ -82,7 +82,7 @@ int main(int argc, const char* argv[])
     column = 'Z';
     while (column!='A'&&column!='B'&&column!='C'&&column!='D'&&column!='E'&&column!='F'&&column!='G'&&column!='H')
     {
-      std::cout << "Player 1, which column will you fire at (A - G)?";
+      std::cout << "Player 1, which column will you fire at (A - H)?";
       isColumn(column);
     }
     player1.fire(row, column);
@@ -103,7 +103,7 @@ int main(int argc, const char* argv[])
     column = 'Z';
     while (column!='A'&&column!='B'&&column!='C'&&column!='D'&&column!='E'&&column!='F'&&column!='G'&&column!='H')
     {
-      std::cout << "Player 2, which column will you fire at (A - G)?";
+      std::cout << "Player 2, which column will you fire at (A - H)?";
       isColumn(column);
     }
     player2.fire(row, column);
