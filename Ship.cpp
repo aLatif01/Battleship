@@ -15,11 +15,11 @@ int Ship::getLength()
   return m_shipLength;
 }
 
-void Ship::addCoordinate(int col, int row)
+void Ship::addCoordinate(int row, int col)
 {
   std::pair<int,int> newPair;
-  newPair.first = col;
-  newPair.second = row;
+  newPair.first = row;
+  newPair.second = col;
   m_pairs.push_back(newPair);
 }
 
