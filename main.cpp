@@ -56,8 +56,10 @@ int main(int argc, const char* argv[])
   Player player2;
   player2.setShipCount(numberShips);
   player1.createBoard();
+  std::cout << "\n\nPLAYER 1'S GAME BOARD:\n\n";
   player1.printBoard();
   player2.createBoard();
+  std::cout << "\n\nPLAYER 2'S GAME BOARD:\n\n";
   player2.printBoard();
   player1.addShip(numberShips);
   std::cout << "\n Player 2: ";
@@ -72,6 +74,7 @@ int main(int argc, const char* argv[])
   char column;
   while (!gameOver)
   {
+    std::cout << "\n\nPLAYER 1'S BOARD:\n";
     player1.printBoard();
     row = 0;
     while (row <= 0 || row > 8)
@@ -85,7 +88,11 @@ int main(int argc, const char* argv[])
       std::cout << "Player 1, which column will you fire at (A - H)?";
       isColumn(column);
     }
-    player1.fire(row, column);
+    player2.fire(row, column); //player 1 attacks player 2's game board
+
+std::cout << "\n\nPLAYER 1'S ATTTACK BOARD:\n\n";
+player1.printAttackBoard();
+
     if(player1.checkForWin())
     {
       gameOver = true;
@@ -94,6 +101,7 @@ int main(int argc, const char* argv[])
     }
     row = 0;
     column = 'Z';
+    std::cout << "\n\nPLAYER 2'S BOARD:\n";
     player2.printBoard();
     while (row <= 0 || row > 8)
     {
@@ -106,33 +114,17 @@ int main(int argc, const char* argv[])
       std::cout << "Player 2, which column will you fire at (A - H)?";
       isColumn(column);
     }
-    player2.fire(row, column);
+    player1.fire(row, column);
+
+std::cout << "\n\nPLAYER 2'S ATTTACK BOARD:\n\n";
+player2.printAttackBoard();
+
     if(player2.checkForWin())
     {
       gameOver = true;
       std::cout << "\n\n Player 2 sunk all of Player 1's battleships! Player 2 wins! \n";
     }
   }
-
-  //TESTS:
-
-  /*
-  player1.fire(1, 'E');
-=======
-  player1.fire(1, 'E');
->>>>>>> e97d8878cb3a333ec14bd1a3b63acca7fc6ffb8f
-  player1.fire(2, 'E');
-  player1.fire(3, 'E');
-  player1.fire(4, 'E');
-  player1.fire(5, 'E');
-  player1.fire(6, 'E');
-  player1.fire(7, 'E');
-  player1.fire(8, 'E');
-<<<<<<< HEAD
-  player1.printBoard();
-
-
-  player1.printBoard();*/
 
 
 

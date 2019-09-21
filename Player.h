@@ -87,10 +87,13 @@ public:
   **/
   bool checkForWin();
 
+  void printAttackBoard();
+
 private:
   const static int m_rows = 9;
   const static int m_cols = 9;
   char gameBoard[m_cols][m_rows];
+  char attackBoard[m_cols][m_rows];
   int m_shipCount = 0;
   std::vector<Ship> m_ships;
   std::string shipDirection;
