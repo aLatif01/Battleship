@@ -91,6 +91,59 @@ char Player::find(int row, char col) //will return the value of the board at the
     }
 }
 
+char Player::findOnAttackBoard(int row, char col)
+{
+  if (row >= 1 && row < 9)
+  {
+    if(col == 'A' || col == 'B' || col == 'C' || col == 'D' || col == 'E' || col == 'F' || col == 'G' || col == 'H')
+    {
+        if(col == 'A')
+        {
+            return (attackBoard[row][1]);
+        }
+
+        if(col == 'B')
+        {
+            return (attackBoard[row][2]);
+        }
+
+        if(col == 'C')
+        {
+            return (attackBoard[row][3]);
+        }
+
+        if(col == 'D')
+        {
+            return (attackBoard[row][4]);
+        }
+
+        if(col == 'E')
+        {
+            return (attackBoard[row][5]);
+        }
+
+        if(col == 'F')
+        {
+           return (attackBoard[row][6]);
+        }
+
+        if(col == 'G')
+        {
+            return (attackBoard[row][7]);
+        }
+
+        if(col == 'H')
+        {
+            return (attackBoard[row][8]);
+        }
+      }
+      else
+      {
+        return 'F';
+      }
+    }
+}
+
 void Player::setShipCount(int numShips)
 {
   m_shipCount = numShips;
@@ -98,7 +151,29 @@ void Player::setShipCount(int numShips)
 
 void Player::fire(int row, char col)
 {
+  bool retry = true;
+  while (retry == true)
+  {
+    char potentialRetry = findOnAttackBoard(row, col);
+    if (potentialRetry == 'M')
+    {
+      std::cout << "You have already missed at this location, please retry:\n";
+      while (column!='A'&&column!='B'&&column!='C'&&column!='D'&&column!='E'&&column!='F'&&column!='G'&&column!='H')
+      {
+        std::cout << "Player 1, which column will you fire at (A - H)? ";
+        isColumn(column);
+      }
+      row = 0;
+      while (row <= 0 || row > 8)
+      {
+        std::cout << "Player 1, which row will you fire at (1 - 8)? ";
+        isRow(row);
+      }
+    }
+  }
+  
   char location = find(row, col);
+  //do a find on attackBoard, if it is an M then allow the player to refire
   if (location == 'F')
   {
     std::cout<<"Location is invalid "<<std::endl;
@@ -196,10 +271,10 @@ void Player::addShip(int numShips)
 
       else if(shipDirection == "VERTICAL" || shipDirection == "V")
       {
-        std::cout << "What is the bottom-most row position you would like your ship to be placed? (1-8)\n>";
-        std::cin >> shipRow;
         std::cout << "What is the bottom-most column position you would like your ship to be placed? (A-H)\n>";
         std::cin >> shipColumn;
+        std::cout << "What is the bottom-most row position you would like your ship to be placed? (1-8)\n>";
+        std::cin >> shipRow;
         //changeCase(shipColumn);
 
         if(validCoordinate(shipRow, shipColumn, shipDirection, i) == true)

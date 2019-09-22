@@ -55,7 +55,7 @@ void isColumn(char& checkColumn)
     std::cout << "ERROR: Please enter a letter (A - G): ";
     std::cin >> checkColumn;
   }
-  toupper(checkColumn);//lower case input support should be covered by this
+  toupper(checkColumn);
 }
 
 int main(int argc, const char* argv[])
@@ -114,7 +114,7 @@ int main(int argc, const char* argv[])
     if(player2.checkForWin())
     {
       gameOver = true;
-      std::cout << "\n\n Player 1 sunk all of Player 2's battleships! Player 1 wins! \n";
+      std::cout << "\n\nPlayer 1 sunk all of Player 2's battleships! Player 1 wins! \n";
       player2.printAttackBoard();
       break;
     }
@@ -143,7 +143,7 @@ int main(int argc, const char* argv[])
     if(player1.checkForWin())
     {
       gameOver = true;
-      std::cout << "\n\n Player 2 sunk all of Player 1's battleships! Player 2 wins! \n";
+      std::cout << "\n\nPlayer 2 sunk all of Player 1's battleships! Player 2 wins! \n";
       player1.printAttackBoard();
     }
   }
