@@ -32,7 +32,8 @@ public:
   /**
   * @pre: valid player object is created
   * @post: changes locations on players attack board depending on where the player chose to attack
-  * @param: row - the row where the player wants to attack, col - the column where the player wants to attack
+  * @param: row - the row where the player wants to attack
+  * @param: col - the column where the player wants to attack
   * @return: nothing
   **/
   void fire(int row, char col);
@@ -40,7 +41,8 @@ public:
   /**
   * @pre: verify input from user, and make sure the input for column is upper case.
   * @post: find the location that user input
-  * @param: int row and char column
+  * @param: int row of coordinate
+  * @param: char column of coordinate
   * @return: char array
   **/
   char find(int row, char col);
@@ -56,7 +58,7 @@ public:
   /**
   * @pre: valid player object is created
   * @post: sets the ships on the board and changes all valid coordinates to an 'S'
-  * @param: numShips - the number of ships the player is going to be placing on the board
+  * @param: numbShips - the number of ships the player is going to be placing on the board
   * @return: nothing
   **/
   void addShip(int numbShips);
@@ -110,6 +112,6 @@ private:
   * @param: std::string& word
   * @return: nothing
   **/
-  void changeCase(std::string &word);
+  void changeCase(std::string& word);
 };
 #endif /* Player_h */

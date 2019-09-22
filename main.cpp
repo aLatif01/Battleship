@@ -29,7 +29,7 @@ void isRow(int& checkRow)
 {
   std::cin >> checkRow;
 
-  while (std::cin.fail())
+  while(std::cin.fail())
   {
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -48,11 +48,11 @@ void isColumn(char& checkColumn)
 {
   std::cin >> checkColumn;
 
-  while (std::cin.fail())
+  while(std::cin.fail())
   {
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    std::cout << "ERROR: Please enter a letter (A - G): ";
+    std::cout << "ERROR: Please enter a letter (A - H): ";
     std::cin >> checkColumn;
   }
   toupper(checkColumn);//lower case input support should be covered by this
