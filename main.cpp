@@ -157,7 +157,7 @@ int main(int argc, const char* argv[])
       std::cout << "Player 2, which row will you fire at (1 - 8)? ";
       isRow(row);
     }
-    player1.fire(row, column);
+    player1.fire(row, column); //player 2 attacks player 1's game board
 
     if(player1.checkForWin())
     {
@@ -166,10 +166,5 @@ int main(int argc, const char* argv[])
       player1.printAttackBoard();
     }
   }
-
-
-
-  //each "shot" will call the fire function (example: player1.fire(guessRow, guessColumn);)
-
   return 0;
 }
