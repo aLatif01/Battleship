@@ -41,9 +41,17 @@ public:
   * @pre: verify input from user, and make sure the input for column is upper case.
   * @post: find the location that user input
   * @param: int row and char column
-  * @return: char array
+  * @return: char
   **/
   char find(int row, char col);
+
+  /**
+  * @pre: verify input from user, and make sure the input for column is upper case.
+  * @post: find the location that user inputs (on attack board))
+  * @param: int row and char column
+  * @return: char
+  **/
+  char findOnAttackBoard(int row, char col);
 
   /**
   * @pre: valid player object is created
