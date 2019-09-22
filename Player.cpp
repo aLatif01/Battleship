@@ -292,7 +292,7 @@ void Player::addShip(int numShips)
           for(int j = 1; j <= i; j++)
           {
             gameBoard[shipRow-j+1][convertColumn(shipColumn)] = 'S';
-            tempShip.addCoordinate(shipRow, (convertColumn(shipColumn))+j-1);
+            tempShip.addCoordinate(shipRow-j+1, (convertColumn(shipColumn)));
           }
           m_ships.push_back(tempShip);
           //may have to delete tempShip here, needs to be tested first
