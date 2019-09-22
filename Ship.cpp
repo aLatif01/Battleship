@@ -21,7 +21,7 @@ void Ship::addCoordinate(int row, int col)
 
 bool Ship::checkForHit(int col, int row)
 {
-  for (int i = 0; i < m_pairs.size(); i++)
+  for(int i = 0; i < m_pairs.size(); i++)
   {
     if(m_pairs[i].first == row && m_pairs[i].second == col)
     {

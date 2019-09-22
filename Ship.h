@@ -1,6 +1,6 @@
 #ifndef Ship_h
 #define Ship_h
-#include <limits>   //  i cant compile without these in WINDOW
+#include <limits>
 #include <string>
 #include <vector>
 #include <utility>
