@@ -1,5 +1,6 @@
 #include "Player.h"
-
+#include<iostream>
+#include<string>
 Player::Player()
 {
   shipDirection = "";
@@ -40,6 +41,7 @@ void Player::printBoard()
 
 char Player::find(int row, char col) //will return the value of the board at the specified location (ex: find(3,C))
 {
+  //to do
   if (row >= 1 && row < 9)
   {
     if(col == 'A' || col == 'B' || col == 'C' || col == 'D' || col == 'E' || col == 'F' || col == 'G' || col == 'H')
@@ -91,6 +93,59 @@ char Player::find(int row, char col) //will return the value of the board at the
     }
 }
 
+char Player::findOnAttackBoard(int row, char col)
+{
+  if (row >= 1 && row < 9)
+  {
+    if(col == 'A' || col == 'B' || col == 'C' || col == 'D' || col == 'E' || col == 'F' || col == 'G' || col == 'H')
+    {
+        if(col == 'A')
+        {
+            return (attackBoard[row][1]);
+        }
+
+        if(col == 'B')
+        {
+            return (attackBoard[row][2]);
+        }
+
+        if(col == 'C')
+        {
+            return (attackBoard[row][3]);
+        }
+
+        if(col == 'D')
+        {
+            return (attackBoard[row][4]);
+        }
+
+        if(col == 'E')
+        {
+            return (attackBoard[row][5]);
+        }
+
+        if(col == 'F')
+        {
+           return (attackBoard[row][6]);
+        }
+
+        if(col == 'G')
+        {
+            return (attackBoard[row][7]);
+        }
+
+        if(col == 'H')
+        {
+            return (attackBoard[row][8]);
+        }
+      }
+      else
+      {
+        return 'F';
+      }
+    }
+}
+
 void Player::setShipCount(int numShips)
 {
   m_shipCount = numShips;
@@ -98,7 +153,29 @@ void Player::setShipCount(int numShips)
 
 void Player::fire(int row, char col)
 {
+  bool retry = true;
+  while (retry == true)
+  {
+    char potentialRetry = findOnAttackBoard(row, col);
+    if (potentialRetry == 'M')
+    {
+      std::cout << "You have already missed at this location, please retry:\n";
+      while (column!='A'&&column!='B'&&column!='C'&&column!='D'&&column!='E'&&column!='F'&&column!='G'&&column!='H')
+      {
+        std::cout << "Player 1, which column will you fire at (A - H)? ";
+        isColumn(column);
+      }
+      row = 0;
+      while (row <= 0 || row > 8)
+      {
+        std::cout << "Player 1, which row will you fire at (1 - 8)? ";
+        isRow(row);
+      }
+    }
+  }
+
   char location = find(row, col);
+  //do a find on attackBoard, if it is an M then allow the player to refire
   if (location == 'F')
   {
     std::cout<<"Location is invalid "<<std::endl;
@@ -119,11 +196,11 @@ void Player::fire(int row, char col)
     for(int i = 0; i < m_shipCount; i++)
     {
 
-      if (m_ships[i].checkForHit(convertColumn(col), row) == true)
+      if (m_ships[i].checkForHit(col, row) == true)
       {
+        std::cout << "\n~~~~~~~~\nCHECKS OUT\n~~~~~~~~~\n";
 
         attackBoard[row][convertColumn(col)] = 'H'; //updates attack board
-        gameBoard[row][convertColumn(col)] = 'H'; //TEST
         if(m_ships[i].getLength() == 0)
         {
           m_shipCount--; //Decreases the ship count once the ship is erased from the vector
@@ -132,7 +209,6 @@ void Player::fire(int row, char col)
           for(int i = 0; i < shipCoords.size(); i = i+2)
           {
             gameBoard[shipCoords[i]][shipCoords[i+1]] = 'X';
-            attackBoard[shipCoords[i]][shipCoords[i+1]] = 'X'; //TEST
           }
         }
 
@@ -141,6 +217,8 @@ void Player::fire(int row, char col)
     }
   }
 }
+
+
 
 bool Player::checkForWin()
 {
@@ -163,30 +241,30 @@ void Player::addShip(int numShips)
     while(correctInput == false)
     {
 
-      std::cout << "\n\nWhich direction would you like to place ship " << i <<"?\nREMINDER: SHIP LENGTH IS BASED ON SHIP NUMBER \n(Horizontal (H) or vertical (V))\n\n>";
+      std::cout << "\n\nWhich direction would you like to place ship " << i <<"?\nREMINDER: SHIP LENGTH IS BASED ON SHIP NUMBER \n(Horizontal or vertical)\n\n>";
       std::cin >> shipDirection;
       changeCase(shipDirection);
 
       //asks user where bottom-most or left-most coordinate of his ship placement
       if(shipDirection == "HORIZONTAL" || shipDirection == "H")
       {
-        std::cout << "What is the left-most column position you would like your ship to be placed? (A-H)\n>";
-        std::cin >> shipColumn;
         std::cout << "What is the left-most row position you would like your ship to be placed? (1-8)\n>";
         std::cin >> shipRow;
+        std::cout << "What is the left-most column position you would like your ship to be placed? (A-H)\n>";
+        std::cin >> shipColumn;
         shipColumn = toupper(shipColumn);
 
         if(validCoordinate(shipRow, shipColumn, shipDirection, i) == true) //this needs to check if ALL shipPosition are valid
         {
+          correctInput = true;
           Ship tempShip(i);
           for(int j = 1; j <= i; j++)
           {
             gameBoard[shipRow][(convertColumn(shipColumn))+j-1] = 'S';
-            tempShip.addCoordinate(shipRow, (convertColumn(shipColumn)+j-1));
+            tempShip.addCoordinate(shipRow, (convertColumn(shipColumn))+j-1);
           }
           m_ships.push_back(tempShip);
           //may have to delete tempShip here, needs to be tested first
-          correctInput = true;
         }
         else
         {
@@ -202,17 +280,18 @@ void Player::addShip(int numShips)
         std::cin >> shipRow;
         shipColumn = toupper(shipColumn);
 
+
         if(validCoordinate(shipRow, shipColumn, shipDirection, i) == true)
         {
+          correctInput = true;
           Ship tempShip(i);
           for(int j = 1; j <= i; j++)
           {
             gameBoard[shipRow-j+1][convertColumn(shipColumn)] = 'S';
-            tempShip.addCoordinate(shipRow-j+1, (convertColumn(shipColumn)));
+            tempShip.addCoordinate(shipRow, (convertColumn(shipColumn))+j-1);
           }
           m_ships.push_back(tempShip);
           //may have to delete tempShip here, needs to be tested first
-          correctInput = true;
         }
         else
         {
