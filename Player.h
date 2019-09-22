@@ -112,6 +112,14 @@ public:
   void isInt(int& checkInt);
 
   /**
+  * @pre: char provided input
+  * @post: verifies if char is okay or not
+  * @param: char& checkChar - character to check if char or not
+  * @return: nothing
+  **/
+  void isChar(char& checkChar);
+
+  /**
   * @pre: int provided input
   * @post: verifies if row integer is okay or not
   * @param: int& checkRow - int to check if row is int or not

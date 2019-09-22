@@ -253,9 +253,9 @@ void Player::addShip(int numShips)
       if(shipDirection == "HORIZONTAL" || shipDirection == "H")
       {
         std::cout << "What is the left-most column position you would like your ship to be placed? (A-H)\n>";
-        std::cin >> shipColumn;
+        isChar(shipColumn);
         std::cout << "What is the left-most row position you would like your ship to be placed? (1-8)\n>";
-        std::cin >> shipRow;
+        isInt(shipRow);
         shipColumn = toupper(shipColumn);
 
         if(validCoordinate(shipRow, shipColumn, shipDirection, i) == true) //this needs to check if ALL shipPosition are valid
@@ -268,7 +268,6 @@ void Player::addShip(int numShips)
             tempShip.addCoordinate(shipRow, (convertColumn(shipColumn))+j-1);
           }
           m_ships.push_back(tempShip);
-          //may have to delete tempShip here, needs to be tested first
         }
         else
         {
@@ -279,9 +278,9 @@ void Player::addShip(int numShips)
       else if(shipDirection == "VERTICAL" || shipDirection == "V")
       {
         std::cout << "What is the bottom-most column position you would like your ship to be placed? (A-H)\n>";
-        std::cin >> shipColumn;
+        isChar(shipColumn);
         std::cout << "What is the bottom-most row position you would like your ship to be placed? (1-8)\n>";
-        std::cin >> shipRow;
+        isInt(shipRow);
         shipColumn = toupper(shipColumn);
 
 
@@ -292,11 +291,9 @@ void Player::addShip(int numShips)
           for(int j = 1; j <= i; j++)
           {
             gameBoard[shipRow-j+1][convertColumn(shipColumn)] = 'S';
-            std::cout << "adding coord: " << shipRow-j+1 << "," << convertColumn(shipColumn) << '\n';
             tempShip.addCoordinate(shipRow-j+1, (convertColumn(shipColumn)));
           }
           m_ships.push_back(tempShip);
-          //may have to delete tempShip here, needs to be tested first
         }
         else
         {
@@ -446,6 +443,19 @@ void Player::isInt(int& checkInt)
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::cout << "ERROR: Please enter an integer (1 - 5): ";
     std::cin >> checkInt;
+  }
+}
+
+void Player::isChar(char& checkChar)
+{
+  std::cin >> checkChar;
+  int temp = int(checkChar);
+
+  while(temp < 65 || temp > 72)
+  {
+    std::cout << "ERROR: Please enter a column character (A - H): ";
+    std::cin >> checkChar;
+    temp = int(checkChar);
   }
 }
 
