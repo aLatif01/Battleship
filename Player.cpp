@@ -179,7 +179,6 @@ void Player::addShip(int numShips)
         std::cout << "What is the left-most column position you would like your ship to be placed? (A-H)\n>";
         std::cin >> shipColumn;
         shipColumn = toupper(shipColumn);
-        //changeCase(shipColumn);
 
         if(validCoordinate(shipRow, shipColumn, shipDirection, i) == true) //this needs to check if ALL shipPosition are valid
         {
@@ -206,7 +205,6 @@ void Player::addShip(int numShips)
         std::cout << "What is the bottom-most column position you would like your ship to be placed? (A-H)\n>";
         std::cin >> shipColumn;
         shipColumn = toupper(shipColumn);
-        //changeCase(shipColumn);
 
         if(validCoordinate(shipRow, shipColumn, shipDirection, i) == true)
         {
