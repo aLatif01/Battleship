@@ -42,3 +42,43 @@ std::vector<int> Ship::returnCoordinates()
   }
   return coords;
 }
+
+void Ship::isInt(int& checkInt)
+{
+  std::cin >> checkInt;
+
+  while(std::cin.fail())
+  {
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cout << "ERROR: Please enter an integer (1 - 5): ";
+    std::cin >> checkInt;
+  }
+}
+
+void Ship::isRow(int& checkRow)
+{
+  std::cin >> checkRow;
+
+  while (std::cin.fail())
+  {
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cout << "ERROR: Please enter an integer (1 - 8): ";
+    std::cin >> checkRow;
+  }
+}
+
+void Ship::isColumn(char& checkColumn)
+{
+  std::cin >> checkColumn;
+
+  while (std::cin.fail())
+  {
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cout << "ERROR: Please enter a letter (A - G): ";
+    std::cin >> checkColumn;
+  }
+  toupper(checkColumn);
+}

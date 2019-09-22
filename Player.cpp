@@ -160,10 +160,10 @@ void Player::fire(int row, char col)
     if (potentialRetry == 'M')
     {
       std::cout << "You have already missed at this location, please retry:\n";
-      while (column!='A'&&column!='B'&&column!='C'&&column!='D'&&column!='E'&&column!='F'&&column!='G'&&column!='H')
+      while (col!='A'&&col!='B'&&col!='C'&&col!='D'&&col!='E'&&col!='F'&&col!='G'&&col!='H')
       {
         std::cout << "Player 1, which column will you fire at (A - H)? ";
-        isColumn(column);
+        isColumn(col);
       }
       row = 0;
       while (row <= 0 || row > 8)
@@ -433,4 +433,44 @@ void Player::printAttackBoard()
 
     std::cout << std::endl;
   }
+}
+
+void Player::isInt(int& checkInt)
+{
+  std::cin >> checkInt;
+
+  while(std::cin.fail())
+  {
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cout << "ERROR: Please enter an integer (1 - 5): ";
+    std::cin >> checkInt;
+  }
+}
+
+void Player::isRow(int& checkRow)
+{
+  std::cin >> checkRow;
+
+  while (std::cin.fail())
+  {
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cout << "ERROR: Please enter an integer (1 - 8): ";
+    std::cin >> checkRow;
+  }
+}
+
+void Player::isColumn(char& checkColumn)
+{
+  std::cin >> checkColumn;
+
+  while (std::cin.fail())
+  {
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cout << "ERROR: Please enter a letter (A - G): ";
+    std::cin >> checkColumn;
+  }
+  toupper(checkColumn);
 }
