@@ -1,7 +1,5 @@
 #ifndef Player_h
 #define Player_h
-#include <utility>
-#include<iostream>
 #include "Ship.h"
 
 class Player
@@ -87,6 +85,12 @@ public:
   **/
   bool checkForWin();
 
+  /**
+  * @pre: valid player object and attack board is created
+  * @post: prints the attack board for the respective player
+  * @param: none
+  * @return: nothing
+  **/
   void printAttackBoard();
 
 private:

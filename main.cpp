@@ -1,8 +1,11 @@
 #include "Player.h"
-#include <limits>   //  i cant compile without these in WINDOW
-using namespace std;
 
-
+/**
+* @pre: int provided input
+* @post: verifies if int is okay or not
+* @param: int& checkInt - int to check if int or not
+* @return: nothing
+**/
 void isInt(int& checkInt)
 {
   std::cin >> checkInt;
@@ -15,6 +18,13 @@ void isInt(int& checkInt)
     std::cin >> checkInt;
   }
 }
+
+/**
+* @pre: int provided input
+* @post: verifies if row integer is okay or not
+* @param: int& checkRow - int to check if row is int or not
+* @return: nothing
+**/
 void isRow(int& checkRow)
 {
   std::cin >> checkRow;
@@ -27,6 +37,13 @@ void isRow(int& checkRow)
     std::cin >> checkRow;
   }
 }
+
+/**
+* @pre: char provided input
+* @post: verifies if column character is okay or not
+* @param: char& checkColumn - int to check if column is char or not
+* @return: nothing
+**/
 void isColumn(char& checkColumn)
 {
   std::cin >> checkColumn;
@@ -40,6 +57,7 @@ void isColumn(char& checkColumn)
   }
   toupper(checkColumn);//lower case input support should be covered by this
 }
+
 int main(int argc, const char* argv[])
 {
   std::cout << "\n\nWelcome to Battleship!\n\n";
