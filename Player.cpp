@@ -252,10 +252,10 @@ void Player::addShip(int numShips)
       //asks user where bottom-most or left-most coordinate of his ship placement
       if(shipDirection == "HORIZONTAL" || shipDirection == "H")
       {
-        std::cout << "What is the left-most row position you would like your ship to be placed? (1-8)\n>";
-        std::cin >> shipRow;
         std::cout << "What is the left-most column position you would like your ship to be placed? (A-H)\n>";
         std::cin >> shipColumn;
+        std::cout << "What is the left-most row position you would like your ship to be placed? (1-8)\n>";
+        std::cin >> shipRow;
         shipColumn = toupper(shipColumn);
 
         if(validCoordinate(shipRow, shipColumn, shipDirection, i) == true) //this needs to check if ALL shipPosition are valid
@@ -470,7 +470,7 @@ void Player::isColumn(char& checkColumn)
   {
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    std::cout << "ERROR: Please enter a letter (A - G): ";
+    std::cout << "ERROR: Please enter a letter (A - H): ";
     std::cin >> checkColumn;
   }
   toupper(checkColumn);

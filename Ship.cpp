@@ -77,7 +77,7 @@ void Ship::isColumn(char& checkColumn)
   {
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    std::cout << "ERROR: Please enter a letter (A - G): ";
+    std::cout << "ERROR: Please enter a letter (A - H): ";
     std::cin >> checkColumn;
   }
   toupper(checkColumn);

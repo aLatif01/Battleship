@@ -79,8 +79,10 @@ int main(int argc, const char* argv[])
   player2.createBoard();
   std::cout << "\n\nPLAYER 2'S GAME BOARD:\n\n";
   player2.printBoard();
+  std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n====================\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPlayer 2 look away, it's Player 1's turn to add ships \n\n\n====================\n\n\n";
   std::cout << "\nPlayer 1: ";
   player1.addShip(numberShips);
+  std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n====================\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPlayer 1 look away, it's Player 2's turn to add ships \n\n\n====================\n\n\n";
   std::cout << "\nPlayer 2: ";
   player2.addShip(numberShips);
   //have player one set their ships using addShip(numberShips)
