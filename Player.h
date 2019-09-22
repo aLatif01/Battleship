@@ -1,7 +1,5 @@
 #ifndef Player_h
 #define Player_h
-#include <utility>
-#include<iostream>
 #include "Ship.h"
 
 class Player

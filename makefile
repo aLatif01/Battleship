@@ -5,6 +5,6 @@ main.o: main.cpp Player.h Ship.h
 Player.o: Player.h Player.cpp
 	g++ -g -std=c++11 -Wall -c Player.cpp
 Ship.o: Ship.h Ship.cpp
-		g++ -g -std=c++11 -Wall -c Ship.cpp
+	g++ -g -std=c++11 -Wall -c Ship.cpp
 clean:
 	rm *.o Battleship

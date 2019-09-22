@@ -1,6 +1,4 @@
 #include "Player.h"
-#include <limits>   //  i cant compile without these in WINDOW
-using namespace std;
 
 /**
 * @pre: int provided input
