@@ -48,6 +48,14 @@ public:
   char find(int row, char col);
 
   /**
+  * @pre: verify input from user, and make sure the input for column is upper case.
+  * @post: find the location that user inputs (on attack board))
+  * @param: int row and char column
+  * @return: char
+  **/
+  char findOnAttackBoard(int row, char col);
+
+  /**
   * @pre: valid player object is created
   * @post: setting number of ships for our private member variable
   * @param: numShips - the number of ships the player is going to be placing on the board
@@ -94,6 +102,31 @@ public:
   * @return: nothing
   **/
   void printAttackBoard();
+
+  /**
+  * @pre: int provided input
+  * @post: verifies if int is okay or not
+  * @param: int& checkInt - int to check if int or not
+  * @return: nothing
+  **/
+  void isInt(int& checkInt);
+
+  /**
+  * @pre: int provided input
+  * @post: verifies if row integer is okay or not
+  * @param: int& checkRow - int to check if row is int or not
+  * @return: nothing
+  **/
+  void isRow(int& checkRow);
+
+  /**
+  * @pre: char provided input
+  * @post: verifies if column character is okay or not
+  * @param: char& checkColumn - int to check if column is char or not
+  * @return: nothing
+  **/
+  void isColumn(char& checkColumn);
+
 
 private:
   const static int m_rows = 9;

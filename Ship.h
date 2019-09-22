@@ -52,6 +52,30 @@ public:
   **/
   std::vector<int> returnCoordinates();
 
+  /**
+  * @pre: int provided input
+  * @post: verifies if int is okay or not
+  * @param: int& checkInt - int to check if int or not
+  * @return: nothing
+  **/
+  void isInt(int& checkInt);
+
+  /**
+  * @pre: int provided input
+  * @post: verifies if row integer is okay or not
+  * @param: int& checkRow - int to check if row is int or not
+  * @return: nothing
+  **/
+  void isRow(int& checkRow);
+
+  /**
+  * @pre: char provided input
+  * @post: verifies if column character is okay or not
+  * @param: char& checkColumn - int to check if column is char or not
+  * @return: nothing
+  **/
+  void isColumn(char& checkColumn);
+
 private:
   int m_shipLength = 0;
   std::vector< std::pair<int,int> > m_pairs; //this is a list of ordered pairs
