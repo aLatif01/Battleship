@@ -104,18 +104,14 @@ int main(int argc, const char* argv[])
   std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n====================\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPlayer 1 look away, it's Player 2's turn to add ships \n\n\n====================\n\n\n";
   std::cout << "\nPlayer 2: ";
   player2.addShip(numberShips);
-  //have player one set their ships using addShip(numberShips)
-  player1.setShipCount(numberShips);
-  player1.addShip(numberShips);
-  //do all this again for player 2
 
-  //ships are now set, so begin letting players fire onto the other player's board
-  //after each fire, you call playerx.checkForWin() and if it returns true then print game over (and which player won) and return
   bool gameOver = false;
   int row;
   char column;
   while (!gameOver)
   {
+    std::cout << "\n====================\nPlayer 2 look away\n\n\n====================\n\n\n\n\n\n\n\n";
+
     std::cout << "\n\nPLAYER 1'S ATTACK BOARD:\n";
     player2.printAttackBoard();
     std::cout << "\nPLAYER 1'S BOARD:\n";
@@ -143,7 +139,7 @@ int main(int argc, const char* argv[])
     }
 
 
-
+    std::cout << "\n====================\nPlayer 1 look away\n\n\n====================\n\n\n\n\n\n\n\n";
 
     std::cout << "\n\nPLAYER 2'S ATTACK BOARD:\n";
     player1.printAttackBoard();

@@ -202,8 +202,7 @@ void Player::fire(int row, char col)
 
       if (m_ships[i].checkForHit(convertColumn(col), row) == true)
       {
-        std::cout << "\n~~~~~~~~\nCHECKS OUT\n~~~~~~~~~\n";
-
+        std::cout << "You have hit at location " << col << row << "\n";
         attackBoard[row][convertColumn(col)] = 'H'; //updates attack board
         if(m_ships[i].getLength() == 0)
         {
