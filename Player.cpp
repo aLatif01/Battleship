@@ -245,7 +245,7 @@ void Player::addShip(int numShips)
     while(correctInput == false)
     {
 
-      std::cout << "\n\nWhich direction would you like to place ship " << i <<"?\nREMINDER: SHIP LENGTH IS BASED ON SHIP NUMBER \n(Horizontal or vertical)\n\n>";
+      std::cout << "\n\nWhich direction would you like to place ship " << i <<"?\nREMINDER: SHIP LENGTH IS BASED ON SHIP NUMBER \n(Horizontal(H) or vertical (V))\n\n>";
       std::cin >> shipDirection;
       changeCase(shipDirection);
 
