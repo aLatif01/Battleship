@@ -154,19 +154,19 @@ void Player::setShipCount(int numShips)
 void Player::fire(int row, char col)
 {
   bool retry = true;
-  while (retry == true)
+  while(retry == true)
   {
     char potentialRetry = findOnAttackBoard(row, col);
     if (potentialRetry == 'M')
     {
       std::cout << "You have already missed at this location, please retry:\n";
-      while (col!='A'&&col!='B'&&col!='C'&&col!='D'&&col!='E'&&col!='F'&&col!='G'&&col!='H')
+      while(col!='A'&&col!='B'&&col!='C'&&col!='D'&&col!='E'&&col!='F'&&col!='G'&&col!='H')
       {
         std::cout << "Player 1, which column will you fire at (A - H)? ";
         isColumn(col);
       }
       row = 0;
-      while (row <= 0 || row > 8)
+      while(row <= 0 || row > 8)
       {
         std::cout << "Player 1, which row will you fire at (1 - 8)? ";
         isRow(row);
@@ -180,11 +180,11 @@ void Player::fire(int row, char col)
 
   char location = find(row, col);
   //do a find on attackBoard, if it is an M then allow the player to refire
-  if (location == 'F')
+  if(location == 'F')
   {
     std::cout<<"Location is invalid "<<std::endl;
   }
-  if (location == '#')
+  if(location == '#')
   {
     std::cout << "You have missed at location " << col << row << "\n";
     attackBoard[row][convertColumn(col)] = 'M'; // UPDATES ATTACK BOARD
@@ -197,13 +197,13 @@ void Player::fire(int row, char col)
   }
   else if(location == 'S')
   {
-    for(int i = 0; i < m_shipCount; i++)
+    for(int i = 0; i < m_ships.size(); i++)
     {
-
-      if (m_ships[i].checkForHit(convertColumn(col), row) == true)
+      if(m_ships[i].checkForHit(convertColumn(col), row) == true)
       {
         std::cout << "You have hit at location " << col << row << "\n";
         attackBoard[row][convertColumn(col)] = 'H'; //updates attack board
+
         if(m_ships[i].getLength() == 0)
         {
           m_shipCount--; //Decreases the ship count once the ship is erased from the vector
@@ -214,9 +214,7 @@ void Player::fire(int row, char col)
             gameBoard[shipCoords[i]][shipCoords[i+1]] = 'X';
           }
         }
-
       }
-
     }
   }
 }
