@@ -83,6 +83,8 @@ int main(int argc, const char* argv[])
   std::cout << "\n Player 2: ";
   player2.addShip(numberShips);
   //have player one set their ships using addShip(numberShips)
+  player1.setShipCount(numberShips);
+  player1.addShip(numberShips);
   //do all this again for player 2
 
   //ships are now set, so begin letting players fire onto the other player's board
