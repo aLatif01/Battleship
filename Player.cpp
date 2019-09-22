@@ -200,7 +200,7 @@ void Player::fire(int row, char col)
     for(int i = 0; i < m_shipCount; i++)
     {
 
-      if (m_ships[i].checkForHit(col, row) == true)
+      if (m_ships[i].checkForHit(convertColumn(col), row) == true)
       {
         std::cout << "\n~~~~~~~~\nCHECKS OUT\n~~~~~~~~~\n";
 
@@ -292,6 +292,7 @@ void Player::addShip(int numShips)
           for(int j = 1; j <= i; j++)
           {
             gameBoard[shipRow-j+1][convertColumn(shipColumn)] = 'S';
+            std::cout << "adding coord: " << shipRow-j+1 << "," << convertColumn(shipColumn) << '\n';
             tempShip.addCoordinate(shipRow-j+1, (convertColumn(shipColumn)));
           }
           m_ships.push_back(tempShip);
