@@ -29,7 +29,7 @@ void isRow(int& checkRow)
 {
   std::cin >> checkRow;
 
-  while (std::cin.fail())
+  while(std::cin.fail())
   {
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -48,14 +48,33 @@ void isColumn(char& checkColumn)
 {
   std::cin >> checkColumn;
 
-  while (std::cin.fail())
+  while(std::cin.fail())
   {
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    std::cout << "ERROR: Please enter a letter (A - G): ";
+    std::cout << "ERROR: Please enter a letter (A - H): ";
     std::cin >> checkColumn;
   }
   toupper(checkColumn);
+}
+
+/**
+* @pre: char provided input
+* @post: verifies if char is okay or not
+* @param: char& checkChar - character to check if char or not
+* @return: nothing
+**/
+void isChar(char& checkChar)
+{
+  std::cin >> checkChar;
+  int temp = int(checkChar);
+
+  while(temp < 65 || temp > 72)
+  {
+    std::cout << "ERROR: Please enter a column character (A - H): ";
+    std::cin >> checkChar;
+    temp = int(checkChar);
+  }
 }
 
 int main(int argc, const char* argv[])
@@ -86,6 +105,8 @@ int main(int argc, const char* argv[])
   std::cout << "\nPlayer 2: ";
   player2.addShip(numberShips);
   //have player one set their ships using addShip(numberShips)
+  player1.setShipCount(numberShips);
+  player1.addShip(numberShips);
   //do all this again for player 2
 
   //ships are now set, so begin letting players fire onto the other player's board
