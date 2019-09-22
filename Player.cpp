@@ -172,6 +172,10 @@ void Player::fire(int row, char col)
         isRow(row);
       }
     }
+    else
+    {
+      retry = false;
+    }
   }
 
   char location = find(row, col);
