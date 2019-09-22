@@ -21,21 +21,15 @@ void Ship::addCoordinate(int row, int col)
 
 bool Ship::checkForHit(int col, int row)
 {
-  std::pair<int,int> checkPair;
-  checkPair.first = col;
-  checkPair.second = row;
-  if(std::find(m_pairs.begin(), m_pairs.end(), checkPair) != m_pairs.end()) {
-    std::cout << "\nfdsasf\ncheckforhit\nfdafsfdsa\n"; //BUG HERE THIS NEBVER OCCURS
-
-    //will enter this if statement if the pair is in the ships
-    //we do NOT need to remove the specific element from the vector because this checkForHit function will
-    //only be called if the space is 'S' and the space will be changed to 'H' in Player.cpp right after this function finishes
-    m_shipLength--;
-    return true;
+  for (int i = 0; i < m_pairs.size(); i++)
+  {
+    if(m_pairs[i].first == row && m_pairs[i].second == col)
+    {
+      m_shipLength--;
+      return true;
+    }
   }
-  else {
-    return false;
-  }
+  return false;
 }
 
 std::vector<int> Ship::returnCoordinates()
