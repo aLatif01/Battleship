@@ -1,8 +1,11 @@
 #ifndef Ship_h
 #define Ship_h
+#include <limits>   //  i cant compile without these in WINDOW
+#include <string>
+#include <vector>
 #include <utility>
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <algorithm>
 
 class Ship
 {

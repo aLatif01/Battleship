@@ -1,8 +1,4 @@
 #include "Ship.h"
-#include <algorithm>
-#include <utility>
-#include <vector>
-
 
 Ship::Ship(int length)
 {
