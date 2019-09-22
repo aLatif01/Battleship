@@ -58,6 +58,25 @@ void isColumn(char& checkColumn)
   toupper(checkColumn);//lower case input support should be covered by this
 }
 
+/**
+* @pre: char provided input
+* @post: verifies if char is okay or not
+* @param: char& checkChar - character to check if char or not
+* @return: nothing
+**/
+void isChar(char& checkChar)
+{
+  std::cin >> checkChar;
+  int temp = int(checkChar);
+
+  while(temp < 65 || temp > 72)
+  {
+    std::cout << "ERROR: Please enter a column character (A - H): ";
+    std::cin >> checkChar;
+    temp = int(checkChar);
+  }
+}
+
 int main(int argc, const char* argv[])
 {
   std::cout << "\n\nWelcome to Battleship!\n\n";
