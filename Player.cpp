@@ -196,10 +196,10 @@ void Player::addShip(int numShips)
 
       else if(shipDirection == "VERTICAL" || shipDirection == "V")
       {
-        std::cout << "What is the bottom-most row position you would like your ship to be placed? (1-8)\n>";
-        std::cin >> shipRow;
         std::cout << "What is the bottom-most column position you would like your ship to be placed? (A-H)\n>";
         std::cin >> shipColumn;
+        std::cout << "What is the bottom-most row position you would like your ship to be placed? (1-8)\n>";
+        std::cin >> shipRow;
         shipColumn = toupper(shipColumn);
 
         if(validCoordinate(shipRow, shipColumn, shipDirection, i) == true)
