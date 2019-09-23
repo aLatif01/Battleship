@@ -195,6 +195,11 @@ void Player::fire(int row, char col)
     std::cout << "You already missed at location " << col << row <<'\n';
     return;
   }
+  else if(location2 == 'H' || location2 == 'X')
+  {
+    std::cout << "You already hit at location " << col << row <<'\n';
+    return;
+  }
   else if(location == 'S')
   {
     for(int i = 0; i < m_ships.size(); i++)
