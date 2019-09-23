@@ -179,6 +179,7 @@ void Player::fire(int row, char col)
   }
 
   char location = find(row, col);
+  char location2 = findOnAttackBoard(row, col);
   //do a find on attackBoard, if it is an M then allow the player to refire
   if(location == 'F')
   {
