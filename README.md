@@ -6,4 +6,4 @@ This is a recreation of the classic Battleship board game that runs in the comma
 ## Playing
 Run 'make' and then './Battleship'.  
 
-![alt text](https://github.com/beauhodes/EECS448-Project3/blob/master/gameplay2.png?raw=true)
+![alt text](https://github.com/beauhodes/Battleship/blob/master/gameplay2.png?raw=true)
